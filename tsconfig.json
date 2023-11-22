@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "strict": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "lib": ["ES2017", "DOM"],
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "@@/*": [".dumi/tmp/*"],
+      "@wowon/layouts": ["src"],
+      "@wowon/layouts/*": ["src/*", "*"]
+    },
+    "outDir": "./"
+  },
+  "include": ["src/**/*", ".dumirc.ts"],
+  "exclude": ["node_modules", "es/**/*", "cjs/**/*", "dist/**/*"]
+}
