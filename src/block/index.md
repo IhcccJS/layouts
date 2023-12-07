@@ -6,7 +6,7 @@ title: Block
 Block 块
 
 ```tsx
-import { Block } from "@wowon/layouts";
+import { Block } from "@ihccc/layouts";
 
 function Demo () {
   return <Block />

@@ -10,7 +10,7 @@ Card 布局组件
  * iframe: 480
  * background: #f5f5f5
  */
-import { Card } from "@wowon/layouts";
+import { Card } from "@ihccc/layouts";
 
 function Demo () {
   return (

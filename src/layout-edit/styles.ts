@@ -5,7 +5,7 @@ export default createStyles(
     const borderColor = token.colorBorder || '#f1f1f1';
 
     return css`
-      &.wowon-layout-edit {
+      &.ihccc-layout-edit {
         position: relative;
         display: flex;
         flex-direction: column;

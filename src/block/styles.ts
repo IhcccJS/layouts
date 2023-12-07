@@ -3,7 +3,7 @@ import { createStyles, css } from 'antd-style';
 export default createStyles(
   ({ token }) => {
     return css`
-      &.wowon-layout-block {
+      &.ihccc-layout-block {
         width: 100%;
         height: 100%;
         min-height: 200px;

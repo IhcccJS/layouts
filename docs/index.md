@@ -22,17 +22,17 @@ features:
 
 npm
 ```bash
-npm add @wowon/layouts
+npm add @ihccc/layouts
 ```
 
 yarn
 
 ```bash
-yarn add @wowon/layouts
+yarn add @ihccc/layouts
 ```
 
 pnpm
 
 ```bash
-pnpm add @wowon/layouts
+pnpm add @ihccc/layouts
 ```

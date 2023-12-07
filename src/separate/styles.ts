@@ -3,7 +3,7 @@ import { createStyles, css } from 'antd-style';
 export default createStyles(
   ({ token }) => {
     return css`
-      &.wowon-layout-separate {
+      &.ihccc-layout-separate {
         position: relative;
         display: flex;
 

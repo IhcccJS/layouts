@@ -1,5 +1,5 @@
 {
-  "name": "@wowon/layouts",
+  "name": "@ihccc/layouts",
   "version": "0.0.1-alpha.1",
   "description": "Some react layout components library.",
   "license": "MIT",
@@ -51,7 +51,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "http://192.168.6.126:4873"
+    "registry": "https://registry.npmjs.org/"
   },
   "authors": [
     "ihccc-cn <lccc10588@gmail.com>"

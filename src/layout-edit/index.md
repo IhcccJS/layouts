@@ -3,14 +3,14 @@ nav: 布局
 title: 编辑器
 ---
 
-edit-layout 布局组件
+LayoutEdit 布局组件
 
 ```tsx
 /**
  * iframe: 480
  * background: #f5f5f5
  */
-import { EditLayout as Layout } from "@wowon/layouts";
+import { LayoutEdit as Layout } from "@ihccc/layouts";
 
 function Demo () {
   return (
@@ -33,7 +33,7 @@ export default Demo;
  * iframe: 480
  * background: #f5f5f5
  */
-import { EditLayout as Layout, Separate } from "@wowon/layouts";
+import { LayoutEdit as Layout, Separate } from "@ihccc/layouts";
 
 function Demo () {
   return (
@@ -51,6 +51,35 @@ function Demo () {
       bottom={"已选择：9个  位置：23,67"}
       body={"操作面板"}
     />
+  )
+}
+
+export default Demo;
+```
+
+
+```tsx
+/**
+ * iframe: 480
+ * background: #f5f5f5
+ */
+import { LayoutEdit as Layout } from "@ihccc/layouts";
+
+function Demo () {
+  return (
+    <Layout>
+        <Layout.Row>
+        <Layout.Side>
+          <div style={{ width: 200 }}>元素列表</div>
+        </Layout.Side>
+      <Layout.Col>
+        <Layout.Header>header</Layout.Header>
+        <Layout.Col>
+          <Layout.Body>body</Layout.Body>
+        </Layout.Col>
+      </Layout.Col>
+        </Layout.Row>
+    </Layout>
   )
 }
 

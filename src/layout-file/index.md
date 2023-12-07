@@ -11,11 +11,11 @@ file-layout 布局组件
  * background: #f5f5f5
  */
 import React from "react";
-import { FileLayout, Card } from "@wowon/layouts";
+import { LayoutFile, Card } from "@ihccc/layouts";
 
 function Demo () {
   return (
-    <FileLayout
+    <LayoutFile
       header={"header"}
       side={
         <React.Fragment>
@@ -31,8 +31,8 @@ function Demo () {
       bodyFooter="bodyFooter"
       bodyStyle={{ padding: 0 }}
     >
-      FileLayout
-    </FileLayout>
+      LayoutFile
+    </LayoutFile>
   )
 }
 

@@ -1,30 +1,30 @@
 
-# @wowon/layouts
+# @ihccc/layouts
 
 A JavaScript utility library.
 
 
 <!-- Add badges from somewhere like: [shields.io](https://shields.io/) -->
 
-[![NPM version](https://img.shields.io/npm/v/@wowon/layouts.svg?style=flat)](https://npmjs.org/package/@wowon/layouts)
-[![NPM downloads](http://img.shields.io/npm/dm/@wowon/layouts.svg?style=flat)](https://npmjs.org/package/@wowon/layouts)
+[![NPM version](https://img.shields.io/npm/v/@ihccc/layouts.svg?style=flat)](https://npmjs.org/package/@ihccc/layouts)
+[![NPM downloads](http://img.shields.io/npm/dm/@ihccc/layouts.svg?style=flat)](https://npmjs.org/package/@ihccc/layouts)
 ## Documentation
 
-[Documentation](https://wowon/layouts)
+[Documentation](https://ihccc/layouts)
 
 
 ## Installation
 
-Install `@wowon/layouts` with npm
+Install `@ihccc/layouts` with npm
 
 ```bash
-  pnpm i @wowon/layouts
+  pnpm i @ihccc/layouts
 ```
 
 ## Usage/Examples
 
 ```javascript
-import { Layout1 } from '@wowon/layouts'
+import { Layout1 } from '@ihccc/layouts'
 
 function foo() {
   return <Layout1>Hello</Layout1>
@@ -36,7 +36,7 @@ function foo() {
 Clone the project
 
 ```bash
-  git clone https://@wowon/layouts
+  git clone https://@ihccc/layouts
 ```
 
 Go to the project directory
