@@ -61,7 +61,7 @@ function Demo () {
               border: 1px solid #ced4da;
             }
             .btn {
-              margin-top: 10vh;
+              margin-top: 4vh;
               width: 100%;
               padding: .25em .75em;
               font-size: 18px;

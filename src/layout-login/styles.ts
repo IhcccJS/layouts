@@ -26,7 +26,7 @@ export default createStyles(
         .content {
           position: relative;
           width: 420px;
-          padding: 20px;
+          padding: 64px 20px 20px;
           margin: 0 auto;
           box-sizing: border-box;
           background-color: rgba(255, 255, 255, 0.8);
@@ -41,7 +41,6 @@ export default createStyles(
         }
 
         .header {
-          margin-top: 32px;
           margin-bottom: 32px;
 
           .title {
@@ -54,8 +53,8 @@ export default createStyles(
             }
 
             .text {
-              margin-bottom: 0;
-              font-size: 24px;
+              margin: 0;
+              font-size: 26px;
               font-weight: 600;
             }
           }
@@ -99,6 +98,7 @@ export default createStyles(
         &.centered {
           .title {
             justify-content: center;
+            text-align: center;
           }
 
           .desc,
@@ -152,6 +152,32 @@ export default createStyles(
 
           &-right .content {
             border-radius: 0 16px 16px 0;
+          }
+        }
+
+        &.block {
+          .container {
+            align-items: center;
+          }
+
+          .content {
+            width: auto;
+            height: auto;
+            border-radius: 16px;
+            padding: 20px 20px 64px;
+            border: 4px solid #fff;
+          }
+
+          &.align-left {
+            .content {
+              margin-left: 12vw;
+            }
+          }
+
+          &.align-right {
+            .content {
+              margin-right: 12vw;
+            }
           }
         }
 

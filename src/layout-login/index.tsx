@@ -16,13 +16,14 @@ const Copyright: React.FC<any> = ({ icon, text }) => {
 };
 
 const Layout: React.FC<any> = (props) => {
-  const { float, align, blur, centered, logo, title, desc, footer, sideContent, children } = props;
+  const { float, align, blur, block, centered, logo, title, desc, footer, sideContent, children } = props;
   const { styles, cx } = useStyles();
 
   return (
     <div
       className={cx(styles, "main",
         float && "float",
+        block && "block",
         blur && "blur",
         centered && "centered",
         align && 'align-' + align,
