@@ -1,4 +1,5 @@
 import React from 'react';
+import BlockTitle from '../block-title';
 
 import useStyles from './styles';
 
@@ -16,7 +17,7 @@ const Copyright: React.FC<any> = ({ icon, text }) => {
 };
 
 const Layout: React.FC<any> = (props) => {
-  const { float, align, blur, block, centered, logo, title, desc, footer, sideContent, children } = props;
+  const { float, align, blur, block, centered, logo, title, subTitle, footer, sideContent, children } = props;
   const { styles, cx } = useStyles();
 
   return (
@@ -31,13 +32,7 @@ const Layout: React.FC<any> = (props) => {
     >
       <div className={cx(styles, 'container')}>
         <div className={cx(styles, 'content')}>
-          <div className={cx(styles, 'header')}>
-            <div className={cx(styles, 'title')}>
-              {typeof logo === 'string' ? <img className={cx(styles, 'logo')} src={logo} alt="logo" /> : logo}
-              <h2 className={cx(styles, 'text')}>{title}</h2>
-            </div>
-            {desc && <div className={cx(styles, 'desc')}>{desc}</div>}
-          </div>
+          <BlockTitle logo={logo} title={title} subTitle={subTitle} style={{ marginBottom: 32 }} />
           <div className={cx(styles, 'body')}>{children}</div>
           <div className={cx(styles, 'footer')}>{footer}</div>
         </div>

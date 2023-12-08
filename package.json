@@ -1,7 +1,7 @@
 {
   "name": "@ihccc/layouts",
   "version": "0.0.1-alpha.1",
-  "description": "Some react layout components library.",
+  "description": "React layout components library.",
   "license": "MIT",
   "main": "./lib/index.js",
   "module": "./es/index.js",

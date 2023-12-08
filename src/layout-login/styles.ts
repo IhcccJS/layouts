@@ -40,32 +40,6 @@ export default createStyles(
           flex: 1;
         }
 
-        .header {
-          margin-bottom: 32px;
-
-          .title {
-            display: flex;
-            align-items: center;
-
-            .logo {
-              width: 32px;
-              margin-right: 20px;
-            }
-
-            .text {
-              margin: 0;
-              font-size: 26px;
-              font-weight: 600;
-            }
-          }
-
-          .desc {
-            margin-top: 20px;
-            font-size: 16px;
-            color: #a9a9a9;
-          }
-        }
-
         .body {
           position: relative;
         }
@@ -101,7 +75,7 @@ export default createStyles(
             text-align: center;
           }
 
-          .desc,
+          .sub-title,
           .footer {
             text-align: center;
           }
