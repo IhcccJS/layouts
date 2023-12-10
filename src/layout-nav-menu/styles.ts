@@ -2,6 +2,8 @@ import { createStyles, css } from 'antd-style';
 
 export default createStyles(
   ({ token }) => {
+    console.log(token);
+
     const contentWidthFixed = 1200;
 
     return css`

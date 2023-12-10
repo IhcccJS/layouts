@@ -17,7 +17,7 @@ export default [
       },
       {
         name: '设备安装',
-        path: '/b',
+        path: '/c',
       },
     ],
   },

@@ -9,7 +9,7 @@ function Demo() {
   const [contentWidth, setContentWidth] = React.useState('fluid');
   return (
     <React.Fragment>
-      <div style={{ position: 'fixed', top: 96, right: 32, zIndex: 10 }}>
+      <div style={{ position: 'fixed', top: 96, right: 32, zIndex: 999 }}>
         <button onClick={() => setFloat(!float)}>float</button>
         <button onClick={() => setBlur(!blur)}>blur</button>
         <button onClick={() => setFixedHeader(!fixedHeader)}>
@@ -37,118 +37,15 @@ function Demo() {
       >
         <div style={{ paddingBlock: '40vh' }}>
           <h1>PageHome</h1>
-          <Card>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            asperiores atque consectetur debitis distinctio doloremque ducimus
-            eaque eos expedita explicabo fugiat harum ipsam iure magnam
-            necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
-            repudiandae sapiente sed sequi sint soluta tempora tenetur
-          </Card>
-          <Card>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            asperiores atque consectetur debitis distinctio doloremque ducimus
-            eaque eos expedita explicabo fugiat harum ipsam iure magnam
-            necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
-            repudiandae sapiente sed sequi sint soluta tempora tenetur
-          </Card>
-          <Card>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            asperiores atque consectetur debitis distinctio doloremque ducimus
-            eaque eos expedita explicabo fugiat harum ipsam iure magnam
-            necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
-            repudiandae sapiente sed sequi sint soluta tempora tenetur
-          </Card>
-          <Card>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            asperiores atque consectetur debitis distinctio doloremque ducimus
-            eaque eos expedita explicabo fugiat harum ipsam iure magnam
-            necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
-            repudiandae sapiente sed sequi sint soluta tempora tenetur
-          </Card>
-          <Card>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            asperiores atque consectetur debitis distinctio doloremque ducimus
-            eaque eos expedita explicabo fugiat harum ipsam iure magnam
-            necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
-            repudiandae sapiente sed sequi sint soluta tempora tenetur
-          </Card>
-          <Card>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            asperiores atque consectetur debitis distinctio doloremque ducimus
-            eaque eos expedita explicabo fugiat harum ipsam iure magnam
-            necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
-            repudiandae sapiente sed sequi sint soluta tempora tenetur
-          </Card>
-          <Card>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            asperiores atque consectetur debitis distinctio doloremque ducimus
-            eaque eos expedita explicabo fugiat harum ipsam iure magnam
-            necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
-            repudiandae sapiente sed sequi sint soluta tempora tenetur
-          </Card>
-          <Card>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            asperiores atque consectetur debitis distinctio doloremque ducimus
-            eaque eos expedita explicabo fugiat harum ipsam iure magnam
-            necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
-            repudiandae sapiente sed sequi sint soluta tempora tenetur
-          </Card>
-          <Card>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            asperiores atque consectetur debitis distinctio doloremque ducimus
-            eaque eos expedita explicabo fugiat harum ipsam iure magnam
-            necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
-            repudiandae sapiente sed sequi sint soluta tempora tenetur
-          </Card>
-          <Card>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            asperiores atque consectetur debitis distinctio doloremque ducimus
-            eaque eos expedita explicabo fugiat harum ipsam iure magnam
-            necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
-            repudiandae sapiente sed sequi sint soluta tempora tenetur
-          </Card>
-          <Card>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            asperiores atque consectetur debitis distinctio doloremque ducimus
-            eaque eos expedita explicabo fugiat harum ipsam iure magnam
-            necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
-            repudiandae sapiente sed sequi sint soluta tempora tenetur
-          </Card>
-          <Card>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            asperiores atque consectetur debitis distinctio doloremque ducimus
-            eaque eos expedita explicabo fugiat harum ipsam iure magnam
-            necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
-            repudiandae sapiente sed sequi sint soluta tempora tenetur
-          </Card>
-          <Card>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            asperiores atque consectetur debitis distinctio doloremque ducimus
-            eaque eos expedita explicabo fugiat harum ipsam iure magnam
-            necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
-            repudiandae sapiente sed sequi sint soluta tempora tenetur
-          </Card>
-          <Card>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            asperiores atque consectetur debitis distinctio doloremque ducimus
-            eaque eos expedita explicabo fugiat harum ipsam iure magnam
-            necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
-            repudiandae sapiente sed sequi sint soluta tempora tenetur
-          </Card>
-          <Card>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            asperiores atque consectetur debitis distinctio doloremque ducimus
-            eaque eos expedita explicabo fugiat harum ipsam iure magnam
-            necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
-            repudiandae sapiente sed sequi sint soluta tempora tenetur
-          </Card>
-          <Card>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
-            asperiores atque consectetur debitis distinctio doloremque ducimus
-            eaque eos expedita explicabo fugiat harum ipsam iure magnam
-            necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
-            repudiandae sapiente sed sequi sint soluta tempora tenetur
-          </Card>
+          {new Array(10).fill(0).map((_, index) => (
+            <Card key={index}>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
+              asperiores atque consectetur debitis distinctio doloremque ducimus
+              eaque eos expedita explicabo fugiat harum ipsam iure magnam
+              necessitatibus nemo nihil quae quas quibusdam quidem quo repellat
+              repudiandae sapiente sed sequi sint soluta tempora tenetur
+            </Card>
+          ))}
         </div>
       </LayoutNavMenu>
     </React.Fragment>
