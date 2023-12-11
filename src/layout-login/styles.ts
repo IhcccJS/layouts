@@ -11,37 +11,32 @@ export default createStyles(
         // min-height: 720px;
 
         .container {
+          position: relative;
           height: 100%;
           display: flex;
-          /* background by SVGBackgrounds.com */
-          background-color: #f5fbff;
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%239bc2d8' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%235a6685' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%2385abd6' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%235f7295' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%237193d8' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%238a9ab5' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%236c80d9' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%238ea4c1' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%236b74e8' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%237b98ba' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%237f7cf6' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%239dbad9' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
-
-          background-attachment: fixed;
-          background-size: 100%;
-          background-repeat: no-repeat;
-          background-position: center bottom;
+          background-image: linear-gradient(0deg, #bbdefb, #070635);
         }
 
         .content {
           position: relative;
           width: 420px;
-          padding: 64px 20px 20px;
+          padding: 60px 20px 20px;
           margin: 0 auto;
           box-sizing: border-box;
           background-color: rgba(255, 255, 255, 0.8);
-          border-left: 4px solid #fff;
-          border-right: 4px solid #fff;
           box-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.1);
+          z-index: 10;
           transition: 0.2s;
         }
 
         .side {
           flex: 1;
+          height: 100%;
         }
 
         .body {
           position: relative;
+          padding-block: 40px;
         }
 
         .footer {
@@ -62,43 +57,34 @@ export default createStyles(
           }
         }
 
-        &.blur {
-          .content {
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-          }
+        &.blur .content {
+          background-color: rgba(255, 255, 255, 0.8);
+          backdrop-filter: blur(8px);
         }
 
-        &.centered {
-          .title {
-            justify-content: center;
-            text-align: center;
-          }
+        &.centered .block-title {
+          justify-content: center;
+        }
 
-          .sub-title,
-          .footer {
-            text-align: center;
-          }
+        &.centered .sub-title,
+        &.centered .footer {
+          text-align: center;
         }
 
         &.align {
-          &-left {
-            .content {
-              margin: unset;
-              border-left: none;
-            }
+          &-left .content {
+            margin: unset;
+            border-left: none;
           }
 
-          &-right {
-            .container {
-              flex-direction: row-reverse;
-            }
+          &-right .container {
+            flex-direction: row-reverse;
+          }
 
-            .content {
-              margin-left: auto;
-              margin-right: 0;
-              border-right: none;
-            }
+          &-right .content {
+            margin-left: auto;
+            margin-right: 0;
+            border-right: none;
           }
 
           &-left,
@@ -106,7 +92,7 @@ export default createStyles(
           &-right {
             .content {
               width: 35%;
-              min-width: 420px;
+              min-width: 340px;
               display: flex;
               flex-direction: column;
               align-items: center;
@@ -129,30 +115,43 @@ export default createStyles(
           }
         }
 
-        &.block {
-          .container {
-            align-items: center;
-          }
+        &.blocked .container {
+          align-items: center;
+        }
 
+        &.blocked .content {
+          width: auto;
+          height: auto;
+          min-height: 420px;
+          padding-top: 20px;
+        }
+
+        &.blocked.align-center {
           .content {
-            width: auto;
-            height: auto;
             border-radius: 16px;
-            padding: 20px 20px 64px;
-            border: 4px solid #fff;
           }
+        }
 
-          &.align-left {
-            .content {
-              margin-left: 12vw;
-            }
+        &.blocked.align-left,
+        &.blocked.align-right {
+          .content {
+            border-radius: 16px;
+            margin-inline: 8%;
           }
+        }
 
-          &.align-right {
-            .content {
-              margin-right: 12vw;
-            }
-          }
+        &.bordered.align-center .content,
+        &.bordered.align-left .content {
+          border-right: 4px solid #fff;
+        }
+
+        &.bordered.align-center .content,
+        &.bordered.align-right .content {
+          border-left: 4px solid #fff;
+        }
+
+        &.bordered.blocked .content {
+          border: 4px solid #fff;
         }
 
         .copyright {
@@ -177,15 +176,33 @@ export default createStyles(
 
           .content {
             width: 100% !important;
-            border-left: none;
-            border-right: none;
           }
 
-          &.float.align-left .content,
-          &.float.align-center .content,
-          &.float.align-right .content {
-            border-radius: 16px;
+          &.bordered .content {
             border: 4px solid #fff;
+          }
+
+          &.blocked {
+            &.align-left,
+            &.align-center,
+            &.align-right {
+              .content {
+                height: 100%;
+                padding-top: 60px;
+                margin-inline: 0;
+                border-radius: 0;
+              }
+            }
+          }
+
+          &.float {
+            &.align-left,
+            &.align-center,
+            &.align-right {
+              .content {
+                border-radius: 16px;
+              }
+            }
           }
         }
       }

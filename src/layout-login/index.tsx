@@ -17,30 +17,35 @@ const Copyright: React.FC<any> = ({ icon, text }) => {
 };
 
 const Layout: React.FC<any> = (props) => {
-  const { float, align, blur, block, centered, logo, title, subTitle, footer, sideContent, children } = props;
+  const { float, align, blur, bordered, blocked, centered, logo, title, subTitle, footer, sideContent, renderContainer, children } = props;
   const { styles, cx } = useStyles();
+
+  const content = [
+    <div className={cx(styles, 'content')} key="content">
+      <BlockTitle logo={logo} title={title} subTitle={subTitle} direction="vertical" />
+      <div className={cx(styles, 'body')}>{children}</div>
+      <div className={cx(styles, 'footer')}>{footer}</div>
+    </div>,
+    sideContent && align !== "center" && (
+      <div className={cx(styles, 'side')} key="side">
+        {sideContent}
+      </div>
+    )
+  ]
 
   return (
     <div
       className={cx(styles, "main",
         float && "float",
-        block && "block",
+        bordered && "bordered",
+        blocked && "blocked",
         blur && "blur",
         centered && "centered",
         align && 'align-' + align,
       )}
     >
       <div className={cx(styles, 'container')}>
-        <div className={cx(styles, 'content')}>
-          <BlockTitle logo={logo} title={title} subTitle={subTitle} style={{ marginBottom: 32 }} />
-          <div className={cx(styles, 'body')}>{children}</div>
-          <div className={cx(styles, 'footer')}>{footer}</div>
-        </div>
-        {sideContent && align !== "center" && (
-          <div className={cx(styles, 'side')}>
-            {sideContent}
-          </div>
-        )}
+        {renderContainer ? renderContainer(content) : content}
       </div>
     </div>
   );

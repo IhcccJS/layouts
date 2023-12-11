@@ -13,7 +13,7 @@ export default createStyles(
 
         .main-header {
           position: relative;
-          padding-inline: ${token.paddingContentHorizontalLG}px;
+          padding-inline: ${token.paddingContentHorizontal}px;
           display: flex;
           justify-content: center;
           background-color: ${token.colorBgBase};
@@ -63,7 +63,7 @@ export default createStyles(
             background-color: transparent;
 
             .header-content {
-              padding-inline: ${token.paddingContentHorizontalLG}px;
+              padding-inline: ${token.paddingContentHorizontal}px;
               border-radius: ${token.borderRadiusLG}px;
               background-color: ${token.colorBgBase};
             }
@@ -98,7 +98,7 @@ export default createStyles(
 
         .main-body {
           width: 100%;
-          padding-inline: ${token.paddingContentHorizontalLG}px;
+          padding-inline: ${token.paddingContentHorizontal}px;
           box-sizing: border-box;
         }
 
@@ -111,7 +111,7 @@ export default createStyles(
         &.content-width-fixed {
           .main-body {
             width: ${contentWidthFixed}px;
-            max-width: calc(100% - ${token.paddingContentHorizontalLG * 2}px);
+            max-width: calc(100% - ${token.paddingContentHorizontal * 2}px);
             margin: 0 auto;
             padding-inline: 0;
           }

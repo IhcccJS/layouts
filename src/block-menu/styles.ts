@@ -19,39 +19,53 @@ export default createStyles(
 
           .nav-menu-item {
             padding: 4px 12px;
+            font-size: ${token.fontSize}px;
+            color: #2b2929;
+            cursor: pointer;
+
+            & > a {
+              display: flex;
+              align-items: center;
+            }
+
+            &-icon {
+              margin-right: ${token.marginXS}px;
+            }
 
             &-title {
-              font-size: ${token.fontSizeLG}px;
-              font-weight: ${token.fontWeightStrong};
+              position: relative;
+              padding: 4px 16px 4px 12px;
 
-              .nav-menu {
-                margin-top: ${token.margin}px;
+              &::after {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 50%;
+                width: 6px;
+                height: 6px;
+                border-right: 1px solid #afb0b2;
+                border-bottom: 1px solid #afb0b2;
+                transform: translateY(-50%) rotate(45deg);
               }
             }
 
             &-link {
               border-radius: ${token.borderRadius}px;
-              font-size: ${token.fontSize}px;
-              font-weight: normal;
               color: ${token.colorTextBase};
-              cursor: pointer;
               transition: background-color 0.2s ease-in-out;
 
               &-active {
                 color: ${token.colorLinkActive};
-                font-size: ${token.fontSizeXL}px;
-                font-weight: ${token.fontWeightStrong};
               }
 
               &:hover {
-                color: ${token.colorInfoTextHover};
                 background-color: rgba(230, 230, 230, 0.4);
               }
             }
-          }
 
-          &-nest {
-            align-items: flex-start;
+            &:hover {
+              color: ${token.colorInfoTextHover};
+            }
           }
 
           &-horizontal {
@@ -68,31 +82,32 @@ export default createStyles(
         }
 
         .nav-menu-popup {
-          position: absolute;
-          top: 0;
+          position: fixed;
+          top: 56px;
           left: 0;
           right: 0;
-          z-index: 990;
+          z-index: -1;
+          opacity: 0;
+          visibility: hidden;
+          display: flex;
           min-width: 240px;
           max-width: 1200px;
           padding: 16px;
           background-color: ${token.colorBgElevated};
-          border-radius: ${token.borderRadius}px;
-          transform: translateY(-100%);
-          transition: 0.2s ease-in-out;
-
-          &-open {
-            margin-top: 8px;
-            transform: translateY(56px);
-            box-shadow: ${token.boxShadowSecondary};
-          }
+          border-radius: 0 0 ${token.borderRadius}px ${token.borderRadius}px;
+          transform: translateY(8px);
+          transition-duration: 0.2s;
+          transition-easing: ease-in-out;
+          box-shadow: ${token.boxShadowTertiary};
         }
 
-        &:hover {
-          .nav-menu-popup {
-            margin-top: 8px;
-            transform: translateY(56px);
-            box-shadow: ${token.boxShadowSecondary};
+        .nav-menu-item:hover {
+          & > .nav-menu-popup {
+            transform: translateY(0);
+            z-index: 990;
+            opacity: 1;
+            visibility: visible;
+            transition-duration: 0.4s;
           }
         }
       }

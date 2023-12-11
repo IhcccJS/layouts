@@ -4,23 +4,27 @@ import { LayoutLogin } from '@ihccc/layouts';
 const alignOptions = ['left', 'center', 'right'];
 
 function Demo() {
-  const [float, setFloat] = React.useState(true);
-  const [blur, setBlur] = React.useState(true);
+  const [float, setFloat] = React.useState(false);
+  const [blur, setBlur] = React.useState(false);
+  const [blocked, setBlocked] = React.useState(false);
+  const [bordered, setBordered] = React.useState(false);
   const [centered, setCentered] = React.useState(false);
   const [align, setAlign] = React.useState(1);
   return (
     <React.Fragment>
-      <div style={{ position: 'absolute', top: 32, right: 32, zIndex: 10 }}>
+      <div style={{ position: 'absolute', top: 32, right: 32, zIndex: 90 }}>
         <button onClick={() => setFloat(!float)}>float</button>
         <button onClick={() => setBlur(!blur)}>blur</button>
+        <button onClick={() => setBlocked(!blocked)}>blocked</button>
+        <button onClick={() => setBordered(!bordered)}>bordered</button>
         <button onClick={() => setCentered(!centered)}>centered</button>
-        <button onClick={() => setAlign(align + 1 > 2 ? 0 : align + 1)}>
-          align
-        </button>
+        <button onClick={() => setAlign(align + 1 > 2 ? 0 : align + 1)}>align</button>
       </div>
       <LayoutLogin
         float={float}
         blur={blur}
+        blocked={blocked}
+        bordered={bordered}
         centered={centered}
         align={alignOptions[align]}
         logo="/logo.png"
@@ -73,21 +77,11 @@ function Demo() {
         <form>
           <div className="form-group">
             <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              className="form-control"
-              id="username"
-              placeholder="Username"
-            />
+            <input type="text" className="form-control" id="username" placeholder="Username" />
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              placeholder="Password"
-            />
+            <input type="password" className="form-control" id="password" placeholder="Password" />
           </div>
           <div className="form-group">
             <button type="submit" className="btn btn-primary">
