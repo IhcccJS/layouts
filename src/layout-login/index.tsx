@@ -5,7 +5,7 @@ import useStyles from './styles';
 
 const Copyright: React.FC<any> = ({ icon, text }) => {
   return (
-    <div className='copyright'>
+    <div className="copyright">
       {text && (
         <div>
           {icon}
@@ -17,36 +17,50 @@ const Copyright: React.FC<any> = ({ icon, text }) => {
 };
 
 const Layout: React.FC<any> = (props) => {
-  const { float, align, blur, bordered, blocked, centered, logo, title, subTitle, footer, sideContent, renderContainer, children } = props;
+  const {
+    className,
+    float,
+    align,
+    blur,
+    bordered,
+    blocked,
+    centered,
+    logo,
+    title,
+    subTitle,
+    footer,
+    sideContent,
+    renderContainer,
+    children,
+  } = props;
   const { styles, cx } = useStyles();
 
-  const content = [
-    <div className={cx(styles, 'content')} key="content">
-      <BlockTitle logo={logo} title={title} subTitle={subTitle} direction="vertical" />
-      <div className={cx(styles, 'body')}>{children}</div>
-      <div className={cx(styles, 'footer')}>{footer}</div>
-    </div>,
-    sideContent && align !== "center" && (
-      <div className={cx(styles, 'side')} key="side">
-        {sideContent}
+  const content = (
+    <React.Fragment>
+      <div className={cx(styles, 'content')}>
+        <BlockTitle logo={logo} title={title} subTitle={subTitle} direction="vertical" />
+        <div className={cx(styles, 'body')}>{children}</div>
+        <div className={cx(styles, 'footer')}>{footer}</div>
       </div>
-    )
-  ]
+      {sideContent && align !== 'center' && <div className={cx(styles, 'side')}>{sideContent}</div>}
+    </React.Fragment>
+  );
 
   return (
     <div
-      className={cx(styles, "main",
-        float && "float",
-        bordered && "bordered",
-        blocked && "blocked",
-        blur && "blur",
-        centered && "centered",
+      className={cx(
+        styles,
+        className,
+        'main',
+        float && 'float',
+        bordered && 'bordered',
+        blocked && 'blocked',
+        blur && 'blur',
+        centered && 'centered',
         align && 'align-' + align,
       )}
     >
-      <div className={cx(styles, 'container')}>
-        {renderContainer ? renderContainer(content) : content}
-      </div>
+      <div className={cx(styles, 'container')}>{renderContainer ? renderContainer(content) : content}</div>
     </div>
   );
 };

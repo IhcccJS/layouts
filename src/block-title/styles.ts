@@ -11,6 +11,7 @@ export default createStyles(
         .logo {
           max-width: 36px;
           max-height: 36px;
+          margin-right: 16px;
         }
 
         .title {
@@ -36,39 +37,40 @@ export default createStyles(
           padding-block: 6px;
           box-sizing: border-box;
 
-          .logo {
-            margin-right: 8px;
+          .title .text {
+            line-height: 22px;
+            font-size: 22px;
           }
 
-          .title {
-            .text {
-              line-height: 22px;
-              font-size: 22px;
-            }
-
-            .sub-title {
-              margin-top: 6px;
-              line-height: 14px;
-              font-size: 14px;
-              text-align: center;
-            }
+          .title .sub-title {
+            margin-top: 6px;
+            line-height: 14px;
+            font-size: 14px;
+            text-align: center;
           }
         }
 
         &-vertical {
           padding-bottom: 36px;
 
+          .title .sub-title {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+          }
+        }
+      }
+
+      @media (max-width: ${token.screenMD}px) {
+        &.block-title {
           .logo {
-            margin-right: 20px;
+            max-width: 32px;
+            max-height: 32px;
           }
 
-          .title {
-            .sub-title {
-              position: absolute;
-              left: 0;
-              right: 0;
-              bottom: 0;
-            }
+          &-horizontal .title .text {
+            font-size: 20px;
           }
         }
       }

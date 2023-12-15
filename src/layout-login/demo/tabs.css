@@ -1,0 +1,19 @@
+.login-tabs {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.login-tab {
+  padding: 8px 16px;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.login-tab.login-tab-active {
+  border-color: #2196f3;
+  color: #2196f3;
+}
+
+.login-tab + .login-tab {
+  margin-left: 8px;
+}

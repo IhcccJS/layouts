@@ -1,28 +1,21 @@
 import React from 'react';
-import BlockTitle from '../block-title';
-import BlockMenu from '../block-menu';
 
 import useStyles from './styles';
 
 const Layout: React.FC<any> = (props) => {
   const {
-    logo,
-    title,
-    subTitle,
     fixedHeader,
     float,
     blur,
     contentWidth,
-    location,
-    routes,
-    renderIcon,
+    renderTitle,
+    renderMenu,
+    renderButton,
+    renderExtra,
     children,
     heightLayoutHeader,
-    renderLogo,
   } = props;
   const { styles, cx } = useStyles();
-
-  const logoElement = <BlockTitle logo={logo} title={title} subTitle={subTitle} direction="horizontal" />;
 
   return (
     <div
@@ -32,35 +25,28 @@ const Layout: React.FC<any> = (props) => {
         contentWidth === 'fixed' && 'header-width-fixed',
         contentWidth === 'fixed' && 'content-width-fixed',
       )}
+      style={{ '--layout-nav-height': heightLayoutHeader }}
     >
-      <header
-        className={cx(styles, 'main-header', fixedHeader && 'fixed', float && 'float', blur && 'blur')}
-        style={{ height: heightLayoutHeader }}
-      >
+      <header className={cx(styles, 'main-header', fixedHeader && 'fixed', float && 'float', blur && 'blur')}>
         <div className={cx(styles, 'header-content')}>
-          <div className={cx(styles, 'left-content')}>{renderLogo ? renderLogo(logoElement) : logoElement}</div>
-          <div className={cx(styles, 'nav')}>
-            <BlockMenu location={location} routes={routes} renderIcon={renderIcon} />
-          </div>
-          <div className={cx(styles, 'right-content')}>
-            <div>admin</div>
-          </div>
+          <div className={cx(styles, 'left-content')}>{renderTitle}</div>
+          {(renderMenu || renderExtra) && (
+            <React.Fragment>
+              <input id="menu" className={cx(styles, 'toggle-view')} type="checkbox" />
+              <label htmlFor="menu"></label>
+              <div className={cx(styles, 'header-content-view')}>
+                <div className={cx(styles, 'header-menu-nav')}>{renderMenu}</div>
+                {renderButton && <div className={cx(styles, 'header-menu-button')}>{renderButton}</div>}
+                {renderExtra && <div className={cx(styles, 'header-menu-extra')}>{renderExtra}</div>}
+              </div>
+            </React.Fragment>
+          )}
         </div>
       </header>
-      {fixedHeader && (
-        <header
-          className={cx(styles, 'main-header-placeholder', float && 'float')}
-          style={{ height: heightLayoutHeader }}
-        />
-      )}
+      {fixedHeader && <header className={cx(styles, 'main-header-placeholder', float && 'float')} />}
       <main className={cx(styles, 'main-body')}>{children}</main>
     </div>
   );
-};
-
-Layout.defaultProps = {
-  title: 'Show your system name in "title"',
-  heightLayoutHeader: 56,
 };
 
 export default Layout;

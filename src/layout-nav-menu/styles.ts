@@ -8,19 +8,20 @@ export default createStyles(
 
     return css`
       &.layout {
-        background-color: ${token.colorBgLayout};
+        position: relative;
+        background-color: var(--color-bg-layout, ${token.colorBgLayout});
         min-height: 100vh;
 
         .main-header {
-          position: relative;
           padding-inline: ${token.paddingContentHorizontal}px;
           display: flex;
           justify-content: center;
-          background-color: ${token.colorBgBase};
+          background-color: var(--color-bg-component, ${token.colorBgBase});
 
           .header-content {
             width: 100%;
             display: flex;
+            justify-content: space-between;
             box-sizing: border-box;
           }
 
@@ -30,16 +31,54 @@ export default createStyles(
             align-items: center;
           }
 
-          .nav {
-            height: 100%;
-            flex: 1;
-            display: flex;
-            align-items: center;
-            margin-left: 24px;
-            margin-right: 24px;
+          .toggle-view {
+            display: none;
           }
 
-          .right-content {
+          label {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            background-color: #f1f1f1;
+            background-image: url('data:image/svg+xml,<svg t="1702520544885" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="53444" width="128" height="128"><path d="M160 320a32 32 0 0 1-32-32V256a32 32 0 0 1 32-32h704a32 32 0 0 1 32 32v32a32 32 0 0 1-32 32H160z m0 240a32 32 0 0 1-32-32v-32a32 32 0 0 1 32-32h704a32 32 0 0 1 32 32v32a32 32 0 0 1-32 32H160zM160 800a32 32 0 0 1-32-32v-32a32 32 0 0 1 32-32h704a32 32 0 0 1 32 32v32a32 32 0 0 1-32 32H160z" fill="%23303133" p-id="53445"></path></svg>');
+            background-size: 70%;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: none;
+            border-radius: 8px;
+          }
+
+          .toggle-view:checked + label {
+            background-image: url('data:image/svg+xml,<svg t="1702518760165" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="49569" width="128" height="128"><path d="M579.888 512l190.064-190.064a48 48 0 0 0-67.888-67.872L512 444.112 321.936 254.064a48 48 0 1 0-67.872 67.872L444.112 512 254.064 702.064a48 48 0 1 0 67.872 67.872L512 579.888l190.064 190.064a48 48 0 0 0 67.872-67.888L579.888 512z" fill="" p-id="49570"></path></svg>');
+          }
+
+          .header-content-view {
+            flex: 1;
+            display: flex;
+          }
+
+          .header-menu-nav {
+            flex: 1;
+            height: 100%;
+            padding-inline: 24px;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+          }
+
+          .header-menu-button {
+            margin-right: 24px;
+            display: flex;
+            align-items: center;
+
+            & > * + * {
+              margin-left: 12px;
+            }
+          }
+
+          .header-menu-extra {
             height: 100%;
             display: flex;
             align-items: center;
@@ -80,7 +119,7 @@ export default createStyles(
               backdrop-filter: none;
 
               .header-content {
-                background-color: ${token.colorBgBlur};
+                background-color: #ffffff80;
                 backdrop-filter: blur(8px);
               }
             }
@@ -89,7 +128,7 @@ export default createStyles(
 
         .main-header,
         .main-header-placeholder {
-          height: 64px;
+          height: var(--layout-nav-height, 56px);
 
           &.float {
             padding-block: ${token.paddingContentVerticalLG}px;
@@ -114,6 +153,64 @@ export default createStyles(
             max-width: calc(100% - ${token.paddingContentHorizontal * 2}px);
             margin: 0 auto;
             padding-inline: 0;
+          }
+        }
+      }
+
+      @media (max-width: ${token.screenMD}px) {
+        &.layout {
+          .main-header {
+            border-bottom: 1px solid #f1f1f1;
+
+            label {
+              display: block;
+            }
+
+            .toggle-view:checked + label + .header-content-view {
+              display: flex;
+            }
+
+            .header-content-view {
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: var(--layout-nav-height, 56px);
+              bottom: 0;
+              z-index: 990;
+              flex-direction: column-reverse;
+              justify-content: flex-end;
+              align-items: center;
+              display: none;
+              background-color: #fff;
+              overflow: auto;
+              height: calc(100vh - var(--layout-nav-height, 56px));
+            }
+
+            .header-menu-nav {
+              flex: 1;
+              width: 100%;
+              height: auto;
+              border-top: 1px solid #f5f5f5;
+              padding-block: 16px;
+              overflow: auto;
+            }
+
+            .header-menu-button {
+              padding-bottom: 16px;
+              margin-right: 0;
+            }
+
+            .header-menu-extra {
+              width: 100%;
+              height: auto;
+              padding: 16px 0;
+              justify-content: center;
+              border-top: 1px solid #e5e5e5;
+            }
+
+            &.fixed .header-content-view {
+              position: fixed;
+            }
           }
         }
       }

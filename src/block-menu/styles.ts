@@ -18,23 +18,28 @@ export default createStyles(
           list-style-type: none;
 
           .nav-menu-item {
-            padding: 4px 12px;
+            padding: 4px 20px 4px 0;
             font-size: ${token.fontSize}px;
-            color: #2b2929;
+            color: var(--color-text, #2b2929);
             cursor: pointer;
 
-            & > a {
+            &-text {
+              position: relative;
               display: flex;
               align-items: center;
+              padding-left: 32px;
+              white-space: nowrap;
             }
 
             &-icon {
-              margin-right: ${token.marginXS}px;
+              position: absolute;
+              left: 4px;
+              top: 50%;
+              transform: translateY(-50%);
             }
 
             &-title {
               position: relative;
-              padding: 4px 16px 4px 12px;
 
               &::after {
                 content: '';
@@ -51,41 +56,33 @@ export default createStyles(
 
             &-link {
               border-radius: ${token.borderRadius}px;
-              color: ${token.colorTextBase};
+              color: var(--color-text, ${token.colorTextBase});
               transition: background-color 0.2s ease-in-out;
 
               &-active {
-                color: ${token.colorLinkActive};
+                color: var(--color-text-active, ${token.colorLinkActive});
               }
 
               &:hover {
-                background-color: rgba(230, 230, 230, 0.4);
+                background-color: var(--color-bg-hover, rgba(230, 230, 230, 0.4));
               }
             }
 
             &:hover {
-              color: ${token.colorInfoTextHover};
+              color: var(--color-text-hover, ${token.colorInfoTextHover});
             }
-          }
 
-          &-horizontal {
-            flex-direction: row;
-
-            & > .nav-menu-item + .nav-menu-item {
-              margin-left: ${token.margin}px;
+            & + .nav-menu-item {
+              margin-left: 16px;
             }
-          }
-
-          &-vertical {
-            flex-direction: column;
           }
         }
 
         .nav-menu-popup {
-          position: fixed;
-          top: 56px;
+          position: absolute;
+          top: 100%;
           left: 0;
-          right: 0;
+          // right: 0;
           z-index: -1;
           opacity: 0;
           visibility: hidden;
@@ -108,6 +105,50 @@ export default createStyles(
             opacity: 1;
             visibility: visible;
             transition-duration: 0.4s;
+          }
+        }
+      }
+
+      @media (max-width: ${token.screenMD}px) {
+        &.block-menu {
+          .nav-menu {
+            width: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          .nav-menu .nav-menu-item {
+            width: 100%;
+            padding: 4px 0;
+
+            &-title {
+              padding: 8px 0;
+              font-size: 16px;
+              color: var(--color-text-desc, #b5b5b5);
+
+              &::after {
+                display: none;
+              }
+            }
+
+            & + .nav-menu-item {
+              margin-left: 0;
+              margin-top: 8px;
+            }
+          }
+
+          .nav-menu-popup {
+            position: relative;
+            top: auto;
+            background-color: transparent;
+            box-shadow: none;
+            min-width: auto;
+            padding: 0;
+            margin-top: 8px;
+            opacity: 1;
+            visibility: visible;
+            z-index: 10;
+            transform: translateY(0);
           }
         }
       }

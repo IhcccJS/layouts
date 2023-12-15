@@ -136,7 +136,7 @@ export default createStyles(
         &.blocked.align-right {
           .content {
             border-radius: 16px;
-            margin-inline: 8%;
+            margin-inline: 6vw;
           }
         }
 
