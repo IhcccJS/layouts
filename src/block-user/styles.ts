@@ -80,17 +80,20 @@ export default createStyles(
           }
 
           &-item {
+            position: relative;
             display: flex;
             align-items: center;
-            padding: 4px 6px;
+            padding: 4px 32px;
             border-radius: 6px;
+            white-space: nowrap;
             cursor: pointer;
             transition: 0.1s ease-in-out;
 
             &-icon {
+              position: absolute;
+              left: 4px;
               line-height: 14px;
               font-size: 16px;
-              margin-right: 4px;
             }
 
             &-label {

@@ -21,10 +21,12 @@ const BlockUser: React.FC<any> = (props) => {
         <div className={cx(styles, 'block-user-menu')}>
           <ul className={cx(styles, 'block-user-menu-list')}>
             {menus.map((item: any) => {
-              return <li className={cx(styles, 'block-user-menu-item')} key={item.key}>
-                <span className={cx(styles, 'block-user-menu-item-icon')}>{renderIcon?.(item)}</span>
-                <span className={cx(styles, 'block-user-menu-item-label')}>{item.label}</span>
-              </li>;
+              return (
+                <li className={cx(styles, 'block-user-menu-item')} key={item.key}>
+                  {item.icon && <span className={cx(styles, 'block-user-menu-item-icon')}>{renderIcon?.(item)}</span>}
+                  <span className={cx(styles, 'block-user-menu-item-label')}>{item.label}</span>
+                </li>
+              );
             })}
           </ul>
         </div>
