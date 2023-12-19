@@ -49,21 +49,14 @@ function Demo() {
         fixedHeader={fixedHeader}
         contentWidth={contentWidth}
         // heightLayoutHeader={48}
-        renderTitle={
-          <BlockTitle
-            logo="/logo.png"
-            title="无锡市安全监管系统"
-            subTitle="无锡市液化石油气安全监管云平台"
-            direction="horizontal"
-          />
-        }
+        renderTitle={<BlockTitle logo="/logo.png" title="Test Balabala System" direction="horizontal" />}
         renderMenu={<BlockMenu location={location} routes={routes} renderIcon={renderIcon} />}
         renderButton={
           <>
-            <span title="查询">
+            <span title="查询" style={{ paddingInline: 8 }}>
               <Icon type="icon-chazhao" />
             </span>
-            <span title="通知">
+            <span title="通知" style={{ paddingInline: 8 }}>
               <Icon type="icon-xiaoxi" />
             </span>
           </>

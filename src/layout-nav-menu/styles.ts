@@ -41,7 +41,7 @@ export default createStyles(
             transform: translateY(-50%);
             width: 32px;
             height: 32px;
-            background-color: #f1f1f1;
+            background-color: var(--color-bg-secondary, #f1f1f1);
             background-image: url('data:image/svg+xml,<svg t="1702520544885" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="53444" width="128" height="128"><path d="M160 320a32 32 0 0 1-32-32V256a32 32 0 0 1 32-32h704a32 32 0 0 1 32 32v32a32 32 0 0 1-32 32H160z m0 240a32 32 0 0 1-32-32v-32a32 32 0 0 1 32-32h704a32 32 0 0 1 32 32v32a32 32 0 0 1-32 32H160zM160 800a32 32 0 0 1-32-32v-32a32 32 0 0 1 32-32h704a32 32 0 0 1 32 32v32a32 32 0 0 1-32 32H160z" fill="%23303133" p-id="53445"></path></svg>');
             background-size: 70%;
             background-repeat: no-repeat;
@@ -72,10 +72,6 @@ export default createStyles(
             margin-right: 24px;
             display: flex;
             align-items: center;
-
-            & > * + * {
-              margin-left: 12px;
-            }
           }
 
           .header-menu-extra {
