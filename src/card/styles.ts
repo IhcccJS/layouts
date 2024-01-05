@@ -5,7 +5,7 @@ export default createStyles(
     return css`
       &.card {
         position: relative;
-        background-color: #fff;
+        background-color: var(--color-bg-component, #1e293b);
         border-radius: 4px;
 
         & + .card {

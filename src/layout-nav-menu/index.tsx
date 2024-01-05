@@ -4,6 +4,7 @@ import useStyles from './styles';
 
 const Layout: React.FC<any> = (props) => {
   const {
+    className,
     fixedHeader,
     float,
     blur,
@@ -14,6 +15,7 @@ const Layout: React.FC<any> = (props) => {
     renderExtra,
     children,
     heightLayoutHeader,
+    ...restProps
   } = props;
   const { styles, cx } = useStyles();
 
@@ -24,10 +26,14 @@ const Layout: React.FC<any> = (props) => {
         'layout',
         contentWidth === 'fixed' && 'header-width-fixed',
         contentWidth === 'fixed' && 'content-width-fixed',
+        className,
       )}
-      style={{ '--layout-nav-height': heightLayoutHeader }}
+      {...restProps}
     >
-      <header className={cx(styles, 'main-header', fixedHeader && 'fixed', float && 'float', blur && 'blur')}>
+      <header
+        className={cx(styles, 'main-header', fixedHeader && 'fixed', float && 'float', blur && 'blur')}
+        style={{ height: heightLayoutHeader }}
+      >
         <div className={cx(styles, 'header-content')}>
           <div className={cx(styles, 'left-content')}>{renderTitle}</div>
           {(renderMenu || renderExtra) && (
@@ -43,7 +49,12 @@ const Layout: React.FC<any> = (props) => {
           )}
         </div>
       </header>
-      {fixedHeader && <header className={cx(styles, 'main-header-placeholder', float && 'float')} />}
+      {fixedHeader && (
+        <header
+          className={cx(styles, 'main-header-placeholder', float && 'float')}
+          style={{ height: heightLayoutHeader }}
+        />
+      )}
       <main className={cx(styles, 'main-body')}>{children}</main>
     </div>
   );

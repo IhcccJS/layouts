@@ -1,0 +1,37 @@
+html[data-theme='defaultDark'] {
+  --color-primary: #3b82f6;
+  --color-text: #f8fafc;
+  --color-text-inverse: #f8fafc;
+  --color-text-desc: #e2e8f0;
+  --color-text-disabled: #737373;
+  --color-bg: #020617;
+  --color-bg-inverse: #1e293b;
+  --color-bg-header: #1e293b;
+  --color-bg-component: #374151;
+  --color-bg-component-hover: #374151;
+  --color-bg-popover: #1e293b;
+  --color-bg-blur: rgba(55, 65, 81, 0.4);
+  --image-bg-login: linear-gradient(0deg, #27272a, #334155);
+  --image-bg-header: unset;
+  --image-bg-body: unset;
+  --image-bg-side: unset;
+  --color-bg-placeholder: #9ca3af;
+  --color-border: #4b5563;
+  --size-margin: 16px;
+  --size-padding: 12px;
+  --size-border-radius: 6px;
+  --size-border-width: 3px;
+
+  --size-layout-header-height: 64px;
+  --size-layout-content-width: 1200px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  color-scheme: dark;
+  accent-color: var(--color-primary);
+
+  --size-screen-sm: 576px;
+  --size-screen-md: 768px;
+  --size-screen-lg: 992px;
+  --size-screen-xl: 1200px;
+  --size-screen-xxl: 1600px;
+}

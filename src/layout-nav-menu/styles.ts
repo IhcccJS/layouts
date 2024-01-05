@@ -2,21 +2,27 @@ import { createStyles, css } from 'antd-style';
 
 export default createStyles(
   ({ token }) => {
-    console.log(token);
-
-    const contentWidthFixed = 1200;
+    const headerHeight = '64px';
+    const contentWidthFixed = '1200px';
 
     return css`
       &.layout {
         position: relative;
-        background-color: var(--color-bg-layout, ${token.colorBgLayout});
         min-height: 100vh;
+        color: var(--color-text, #f8fafc);
+        background-color: var(--color-bg, #020617);
+        background-image: var(--image-bg-body, unset);
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center bottom;
 
         .main-header {
           padding-inline: ${token.paddingContentHorizontal}px;
           display: flex;
           justify-content: center;
-          background-color: var(--color-bg-component, ${token.colorBgBase});
+          background-color: var(--color-bg-header, #1e293b);
+          background-image: var(--image-bg-header, unset);
+          background-size: cover;
 
           .header-content {
             width: 100%;
@@ -90,7 +96,7 @@ export default createStyles(
           }
 
           &.blur {
-            background-color: ${token.colorBgBlur};
+            background-color: var(--color-bg-blur, rgba(55, 65, 81, 0.4));
             backdrop-filter: blur(8px);
           }
 
@@ -100,7 +106,7 @@ export default createStyles(
             .header-content {
               padding-inline: ${token.paddingContentHorizontal}px;
               border-radius: ${token.borderRadiusLG}px;
-              background-color: ${token.colorBgBase};
+              background-color: var(--color-bg-header, #1e293b);
             }
 
             &.fixed {
@@ -115,7 +121,7 @@ export default createStyles(
               backdrop-filter: none;
 
               .header-content {
-                background-color: #ffffff80;
+                background-color: var(--color-bg-blur, rgba(55, 65, 81, 0.4));
                 backdrop-filter: blur(8px);
               }
             }
@@ -124,7 +130,7 @@ export default createStyles(
 
         .main-header,
         .main-header-placeholder {
-          height: var(--layout-nav-height, 56px);
+          height: var(--size-layout-header-height, ${headerHeight});
 
           &.float {
             padding-block: ${token.paddingContentVerticalLG}px;
@@ -133,19 +139,18 @@ export default createStyles(
 
         .main-body {
           width: 100%;
-          padding-inline: ${token.paddingContentHorizontal}px;
           box-sizing: border-box;
         }
 
         &.header-width-fixed {
           .header-content {
-            width: ${contentWidthFixed}px;
+            width: var(--size-layout-content-width, ${contentWidthFixed});
           }
         }
 
         &.content-width-fixed {
           .main-body {
-            width: ${contentWidthFixed}px;
+            width: var(--size-layout-content-width, ${contentWidthFixed});
             max-width: calc(100% - ${token.paddingContentHorizontal * 2}px);
             margin: 0 auto;
             padding-inline: 0;
@@ -156,8 +161,6 @@ export default createStyles(
       @media (max-width: ${token.screenMD}px) {
         &.layout {
           .main-header {
-            border-bottom: 1px solid #f1f1f1;
-
             label {
               display: block;
             }
@@ -170,25 +173,26 @@ export default createStyles(
               position: absolute;
               left: 0;
               right: 0;
-              top: var(--layout-nav-height, 56px);
+              top: var(--size-layout-header-height, ${headerHeight});
               bottom: 0;
               z-index: 990;
               flex-direction: column-reverse;
               justify-content: flex-end;
               align-items: center;
               display: none;
-              background-color: #fff;
+              background-color: var(--color-bg-header, #1e293b);
               overflow: auto;
-              height: calc(100vh - var(--layout-nav-height, 56px));
+              height: calc(100vh - var(--size-layout-header-height, ${headerHeight}));
             }
 
             .header-menu-nav {
               flex: 1;
               width: 100%;
               height: auto;
-              border-top: 1px solid #f5f5f5;
+              border-top: 1px solid var(--color-border, #4b5563);
               padding-block: 16px;
               overflow: auto;
+              overscroll-behavior: contain;
             }
 
             .header-menu-button {
@@ -201,7 +205,6 @@ export default createStyles(
               height: auto;
               padding: 16px 0;
               justify-content: center;
-              border-top: 1px solid #e5e5e5;
             }
 
             &.fixed .header-content-view {

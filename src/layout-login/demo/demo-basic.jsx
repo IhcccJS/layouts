@@ -1,7 +1,14 @@
 import React from 'react';
 import { LayoutLogin } from '@ihccc/layouts';
+import { loadCss } from '@ihccc/utils';
 import useStateBar from './useStateBar';
 import LoginForm from './form';
+
+(() => {
+  // 加载主题变量
+  loadCss('/default-dark.css');
+  document.documentElement.setAttribute('data-theme', 'defaultDark');
+})();
 
 function Demo() {
   const { view, float, blur, blocked, bordered, centered, align } = useStateBar();
@@ -10,6 +17,7 @@ function Demo() {
     <React.Fragment>
       {view}
       <LayoutLogin
+        titleOutside
         float={float}
         blur={blur}
         blocked={blocked}

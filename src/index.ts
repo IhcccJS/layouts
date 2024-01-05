@@ -1,4 +1,3 @@
-import '@ihccc/css-theme/dist/default.css';
 import Block from './block/index';
 import BlockMenu from './block-menu/index';
 import BlockTitle from './block-title/index';

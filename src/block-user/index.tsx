@@ -12,9 +12,11 @@ const BlockUser: React.FC<any> = (props) => {
         <div className={cx(styles, 'block-user-avatar')}>{src || icon}</div>
         <div className={cx(styles, 'block-user-info')}>
           <div className={cx(styles, 'block-user-name')}>{username}</div>
-          <div className={cx(styles, 'block-user-extra')}>
-            <span className={cx(styles, 'block-user-role')}>{role}</span>
-          </div>
+          {role && (
+            <div className={cx(styles, 'block-user-extra')}>
+              <span className={cx(styles, 'block-user-role')}>{role}</span>
+            </div>
+          )}
         </div>
       </div>
       {Array.isArray(menus) && (

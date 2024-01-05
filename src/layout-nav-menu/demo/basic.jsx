@@ -1,20 +1,19 @@
 import React from 'react';
 import { LayoutNavMenu, BlockTitle, BlockMenu, BlockUser, Card } from '@ihccc/layouts';
+import { loadCss, loadScript } from '@ihccc/utils';
 import Icon from './icon';
 import routes from './routes';
 
-let loaded = {};
-
-const loadScript = (src) => {
-  if (loaded[src]) return;
-  loaded[src] = true;
-  const script = document.createElement('script');
-  script.src = src;
-  script.type = 'text/javascript';
-  document.head.appendChild(script);
-};
+(() => {
+  // 加载图标库
+  loadScript('/font_3310509_jrhf4hrcd78.js');
+  // 加载主题变量
+  loadCss('/default-dark.css');
+  document.documentElement.setAttribute('data-theme', 'defaultDark');
+})();
 
 const renderIcon = ({ icon }) => {
+  if (!icon) return null;
   return <Icon type={icon} />;
 };
 
@@ -31,10 +30,6 @@ function Demo() {
   const [fixedHeader, setFixedHeader] = React.useState(true);
   const [contentWidth, setContentWidth] = React.useState('fixed');
 
-  React.useEffect(() => {
-    loadScript('/font_3310509_jrhf4hrcd78.js');
-  }, []);
-
   return (
     <React.Fragment>
       <div style={{ position: 'fixed', bottom: 32, right: 32, zIndex: 999 }}>
@@ -50,7 +45,7 @@ function Demo() {
         contentWidth={contentWidth}
         // heightLayoutHeader={48}
         renderTitle={<BlockTitle logo="/logo.png" title="Test Balabala System" direction="horizontal" />}
-        renderMenu={<BlockMenu location={location} routes={routes} renderIcon={renderIcon} />}
+        renderMenu={<BlockMenu blur={blur} location={location} routes={routes} renderIcon={renderIcon} />}
         renderButton={
           <>
             <span title="查询" style={{ paddingInline: 8 }}>

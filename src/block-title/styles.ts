@@ -9,7 +9,6 @@ export default createStyles(
         align-items: center;
 
         .logo {
-          max-width: 36px;
           max-height: 36px;
           margin-right: 16px;
         }
@@ -27,7 +26,7 @@ export default createStyles(
 
           .sub-title {
             font-size: 16px;
-            color: #a9a9a9;
+            color: var(--color-text-desc, #e2e8f0);
           }
         }
 
@@ -65,11 +64,10 @@ export default createStyles(
       @media (max-width: ${token.screenMD}px) {
         &.block-title {
           .logo {
-            max-width: 32px;
-            max-height: 32px;
+            max-height: 24px;
           }
 
-          &-horizontal .title .text {
+          .title .text {
             font-size: 20px;
           }
         }

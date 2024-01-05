@@ -25,6 +25,7 @@ const Layout: React.FC<any> = (props) => {
     bordered,
     blocked,
     centered,
+    titleOutside,
     logo,
     title,
     subTitle,
@@ -35,10 +36,12 @@ const Layout: React.FC<any> = (props) => {
   } = props;
   const { styles, cx } = useStyles();
 
+  const titleDom = <BlockTitle logo={logo} title={title} subTitle={subTitle} direction="vertical" />;
+
   const content = (
     <React.Fragment>
-      <div className={cx(styles, 'content')}>
-        <BlockTitle logo={logo} title={title} subTitle={subTitle} direction="vertical" />
+      <div className={cx(styles, 'content', titleOutside && 'title-outside')}>
+        {titleDom}
         <div className={cx(styles, 'body')}>{children}</div>
         <div className={cx(styles, 'footer')}>{footer}</div>
       </div>

@@ -5,7 +5,6 @@
 .form-group label {
   display: block;
   margin-bottom: 0.5em;
-  color: #495057;
 }
 
 .form-control {
@@ -15,9 +14,15 @@
   padding: 0.25em 0.75em;
   font-size: 1em;
   line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  border: 1px solid #ced4da;
+  color: var(--color-text);
+  background-color: var(--color-bg-component);
+  border: 2px solid var(--color-border);
+  border-radius: var(--size-border-radius);
+
+  &:focus-visible {
+    border-color: var(--color-primary);
+    outline: none;
+  }
 }
 
 .btn {
@@ -30,13 +35,12 @@
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  color: var(--color-text);
+  background-color: var(--color-primary);
+  border-radius: var(--size-border-radius);
 }
 
 .btn-primary:hover {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  color: var(--color-text);
+  background-color: var(--color-primary);
 }

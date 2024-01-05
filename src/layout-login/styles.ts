@@ -2,28 +2,34 @@ import { createStyles, css } from 'antd-style';
 
 export default createStyles(
   ({ token }) => {
-    console.log(token);
-
     return css`
       &.main {
         height: 100vh;
         box-sizing: border-box;
         // min-height: 720px;
+        color: var(--color-text, #f8fafc);
 
         .container {
           position: relative;
           height: 100%;
           display: flex;
-          background-image: linear-gradient(0deg, #bbdefb, #070635);
+          background-image: var(--image-bg-login, linear-gradient(0deg, #27272a, #334155));
+          background-repeat: no-repeat;
+          background-position: center bottom;
+          background-size: cover;
         }
 
         .content {
           position: relative;
           width: 420px;
+          min-width: 340px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           padding: 60px 20px 20px;
           margin: 0 auto;
           box-sizing: border-box;
-          background-color: rgba(255, 255, 255, 0.8);
+          background-color: var(--color-bg-component, #374151);
           box-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.1);
           z-index: 10;
           transition: 0.2s;
@@ -50,6 +56,7 @@ export default createStyles(
 
         &.float {
           padding: 16px;
+          background-color: var(--color-bg, #020617);
 
           .container {
             border-radius: 16px;
@@ -58,7 +65,7 @@ export default createStyles(
         }
 
         &.blur .content {
-          background-color: rgba(255, 255, 255, 0.8);
+          background-color: var(--color-bg-blur, rgba(55, 65, 81, 0.4));
           backdrop-filter: blur(8px);
         }
 
@@ -92,10 +99,6 @@ export default createStyles(
           &-right {
             .content {
               width: 35%;
-              min-width: 340px;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
             }
 
             .content > *:not(.footer) {
@@ -140,22 +143,28 @@ export default createStyles(
           }
         }
 
+        &.bordered .content {
+          border-width: 0;
+          border-style: solid;
+          border-color: var(--color-border, #4b5563);
+        }
+
         &.bordered.align-center .content,
         &.bordered.align-left .content {
-          border-right: 4px solid #fff;
+          border-right-width: 4px;
         }
 
         &.bordered.align-center .content,
         &.bordered.align-right .content {
-          border-left: 4px solid #fff;
+          border-left-width: 4px;
         }
 
         &.bordered.blocked .content {
-          border: 4px solid #fff;
+          border-width: 4px;
         }
 
         .copyright {
-          color: #727272;
+          color: var(--color-text-desc, #e2e8f0);
 
           span {
             margin: 0 4px;

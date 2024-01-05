@@ -17,7 +17,7 @@ export default createStyles(
           transition: 0.2s ease-in-out;
 
           &:hover {
-            background: #f1f1f1;
+            background: var(--color-bg-component-hover, #374151);
           }
         }
 
@@ -25,7 +25,7 @@ export default createStyles(
           width: 40px;
           height: 40px;
           border-radius: 50%;
-          background: #e5e5e5;
+          background: var(--color-bg-placeholder, #9ca3af);
           border: 2px solid #fff;
           background-image: url("data:image/svg+xml,%3Csvg t='1702457562705' class='icon' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='17618' width='32' height='32'%3E%3Cpath d='M512 102.4a204.8 204.8 0 1 0 0 409.6 204.8 204.8 0 0 0 0-409.6zM204.8 307.2a307.2 307.2 0 1 1 614.4 0A307.2 307.2 0 0 1 204.8 307.2z m102.4 512a153.6 153.6 0 0 0-153.6 153.6 51.2 51.2 0 1 1-102.4 0 256 256 0 0 1 256-256h409.6a256 256 0 0 1 256 256 51.2 51.2 0 1 1-102.4 0 153.6 153.6 0 0 0-153.6-153.6H307.2z' fill='%23000000' fill-opacity='.85' p-id='17619'%3E%3C/path%3E%3C/svg%3E");
           background-size: 70%;
@@ -73,7 +73,7 @@ export default createStyles(
             min-width: 120px;
             padding: 4px;
             border-radius: 6px;
-            background: #fff;
+            background: var(--color-bg-popover, #1e293b);
             list-style: none;
             margin-block: 0;
             box-shadow: ${token.boxShadowSecondary};
@@ -101,7 +101,7 @@ export default createStyles(
             }
 
             &:hover {
-              background: #f1f1f1;
+              background: var(--color-bg-component-hover, #374151);
             }
 
             &:active {
@@ -129,16 +129,12 @@ export default createStyles(
 
           &-box {
             padding: 6px 12px;
-            background: #f1f1f1;
+            background: transparent;
           }
 
           &-avatar {
             width: 56px;
             height: 56px;
-          }
-
-          &-name {
-            font-size: 20px;
           }
 
           &-extra {
@@ -152,6 +148,7 @@ export default createStyles(
             width: 100%;
 
             &-list {
+              background: transparent;
               box-shadow: none;
             }
           }
