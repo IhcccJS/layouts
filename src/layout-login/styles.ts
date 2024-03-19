@@ -8,6 +8,7 @@ export default createStyles(
         box-sizing: border-box;
         // min-height: 720px;
         color: var(--color-text, #f8fafc);
+        background-color: var(--color-bg, #020617);
 
         .container {
           position: relative;
@@ -56,7 +57,6 @@ export default createStyles(
 
         &.float {
           padding: 16px;
-          background-color: var(--color-bg, #020617);
 
           .container {
             border-radius: 16px;

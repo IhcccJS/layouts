@@ -91,7 +91,7 @@ export default createStyles(
             top: 0;
             left: 0;
             right: 0;
-            z-index: 10;
+            z-index: var(--z-index-header, 200);
             box-shadow: ${token.boxShadowTertiary};
           }
 
@@ -151,7 +151,7 @@ export default createStyles(
         &.content-width-fixed {
           .main-body {
             width: var(--size-layout-content-width, ${contentWidthFixed});
-            max-width: calc(100% - ${token.paddingContentHorizontal * 2}px);
+            max-width: 100%;
             margin: 0 auto;
             padding-inline: 0;
           }

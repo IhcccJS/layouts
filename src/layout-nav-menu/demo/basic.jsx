@@ -60,7 +60,7 @@ function Demo() {
           <BlockUser icon={'icon'} username={'admin'} role={'admin'} menus={menus} renderIcon={renderIcon} />
         }
       >
-        <div style={{ paddingBlock: '24px' }}>
+        <div style={{ padding: '24px' }}>
           <h1 style={{ marginTop: 0 }}>PageHome</h1>
           {new Array(10).fill(0).map((_, index) => (
             <Card key={index}>
