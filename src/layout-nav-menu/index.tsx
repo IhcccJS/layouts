@@ -24,8 +24,8 @@ const Layout: React.FC<any> = (props) => {
       className={cx(
         styles,
         'layout',
-        contentWidth === 'fixed' && 'header-width-fixed',
-        contentWidth === 'fixed' && 'content-width-fixed',
+        (contentWidth === 'fixed' || contentWidth?.header === 'fixed') && 'header-width-fixed',
+        (contentWidth === 'fixed' || contentWidth?.content === 'fixed') && 'content-width-fixed',
         className,
       )}
       {...restProps}

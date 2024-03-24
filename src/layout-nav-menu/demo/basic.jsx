@@ -30,6 +30,10 @@ function Demo() {
   const [fixedHeader, setFixedHeader] = React.useState(true);
   const [contentWidth, setContentWidth] = React.useState('fixed');
 
+  const onMenuClick = (item) => {
+    console.log(item);
+  };
+
   return (
     <React.Fragment>
       <div style={{ position: 'fixed', bottom: 32, right: 32, zIndex: 999 }}>
@@ -57,7 +61,14 @@ function Demo() {
           </>
         }
         renderExtra={
-          <BlockUser icon={'icon'} username={'admin'} role={'admin'} menus={menus} renderIcon={renderIcon} />
+          <BlockUser
+            icon={'icon'}
+            username={'admin'}
+            role={'admin'}
+            menus={menus}
+            renderIcon={renderIcon}
+            onMenuClick={onMenuClick}
+          />
         }
       >
         <div style={{ padding: '24px' }}>

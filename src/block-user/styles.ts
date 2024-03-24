@@ -27,10 +27,6 @@ export default createStyles(
           border-radius: 50%;
           background: var(--color-bg-placeholder, #9ca3af);
           border: 2px solid #fff;
-          background-image: url("data:image/svg+xml,%3Csvg t='1702457562705' class='icon' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='17618' width='32' height='32'%3E%3Cpath d='M512 102.4a204.8 204.8 0 1 0 0 409.6 204.8 204.8 0 0 0 0-409.6zM204.8 307.2a307.2 307.2 0 1 1 614.4 0A307.2 307.2 0 0 1 204.8 307.2z m102.4 512a153.6 153.6 0 0 0-153.6 153.6 51.2 51.2 0 1 1-102.4 0 256 256 0 0 1 256-256h409.6a256 256 0 0 1 256 256 51.2 51.2 0 1 1-102.4 0 153.6 153.6 0 0 0-153.6-153.6H307.2z' fill='%23000000' fill-opacity='.85' p-id='17619'%3E%3C/path%3E%3C/svg%3E");
-          background-size: 70%;
-          background-repeat: no-repeat;
-          background-position: center;
           padding: 4px;
           box-sizing: border-box;
           box-shadow: ${token.boxShadowTertiary};

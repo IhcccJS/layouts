@@ -1,6 +1,6 @@
 {
   "name": "@ihccc/layouts",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "React layout components library.",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -57,7 +57,7 @@
     "ihccc-cn <lccc10588@gmail.com>"
   ],
   "dependencies": {
-    "@ihccc/utils": "0.0.1-alpha.2",
+    "@ihccc/utils": "0.0.1-alpha.3",
     "antd-style": "^3.5.0",
     "lodash": "^4.17.21"
   }
