@@ -14,7 +14,7 @@ export default createStyles(
           position: relative;
           height: 100%;
           display: flex;
-          background-image: var(--image-bg-login, linear-gradient(0deg, #27272a, #334155));
+          background-image: var(--image-bg-layout-login, linear-gradient(0deg, #27272a, #334155));
           background-repeat: no-repeat;
           background-position: center bottom;
           background-size: cover;

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Sider from './sider';
 import useStyles from './styles';
 
 const Layout: React.FC<any> = (props) => {
@@ -59,5 +59,7 @@ const Layout: React.FC<any> = (props) => {
     </div>
   );
 };
+
+(Layout as any).Sider = Sider;
 
 export default Layout;

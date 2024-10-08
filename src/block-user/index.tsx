@@ -25,7 +25,9 @@ const BlockUser: React.FC<any> = (props) => {
             {menus.map((item: any) => {
               return (
                 <li className={cx(styles, 'block-user-menu-item')} onClick={() => onMenuClick?.(item)} key={item.key}>
-                  {item.icon && <span className={cx(styles, 'block-user-menu-item-icon')}>{renderIcon?.(item)}</span>}
+                  {item.icon && (
+                    <span className={cx(styles, 'block-user-menu-item-icon')}>{renderIcon?.(item) || item.icon}</span>
+                  )}
                   <span className={cx(styles, 'block-user-menu-item-label')}>{item.label}</span>
                 </li>
               );

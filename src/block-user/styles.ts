@@ -6,6 +6,7 @@ export default createStyles(
       &.block-user {
         position: relative;
         width: 100%;
+        min-width: 120px;
 
         &-box {
           padding: 4px 8px;
@@ -14,11 +15,6 @@ export default createStyles(
           align-items: center;
           box-sizing: border-box;
           cursor: pointer;
-          transition: 0.2s ease-in-out;
-
-          &:hover {
-            background: var(--color-bg-component-hover, #374151);
-          }
         }
 
         &-avatar {

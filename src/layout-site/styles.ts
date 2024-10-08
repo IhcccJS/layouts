@@ -11,7 +11,7 @@ export default createStyles(
         min-height: 100vh;
         color: var(--color-text, #f8fafc);
         background-color: var(--color-bg, #020617);
-        background-image: var(--image-bg-body, unset);
+        background-image: var(--image-bg-layout-body, unset);
         background-attachment: fixed;
         background-size: cover;
         background-position: center bottom;
@@ -20,8 +20,8 @@ export default createStyles(
           padding-inline: ${token.paddingContentHorizontal}px;
           display: flex;
           justify-content: center;
-          background-color: var(--color-bg-header, #1e293b);
-          background-image: var(--image-bg-header, unset);
+          background-color: var(--color-bg-layout-header, #1e293b);
+          background-image: var(--image-bg-layout-header, unset);
           background-size: cover;
 
           .header-content {
@@ -106,7 +106,7 @@ export default createStyles(
             .header-content {
               padding-inline: ${token.paddingContentHorizontal}px;
               border-radius: ${token.borderRadiusLG}px;
-              background-color: var(--color-bg-header, #1e293b);
+              background-color: var(--color-bg-layout-header, #1e293b);
             }
 
             &.fixed {
@@ -180,7 +180,7 @@ export default createStyles(
               justify-content: flex-end;
               align-items: center;
               display: none;
-              background-color: var(--color-bg-header, #1e293b);
+              background-color: var(--color-bg-layout-header, #1e293b);
               overflow: auto;
               height: calc(100vh - var(--size-layout-header-height, ${headerHeight}));
             }
