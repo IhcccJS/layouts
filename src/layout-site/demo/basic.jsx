@@ -12,6 +12,8 @@ import routes from './routes';
   document.documentElement.setAttribute('data-theme', 'defaultDark');
 })();
 
+const siderStatusList = ['close', 'collapse', 'open', 'expand', 'halfScreen', 'fullScreen', 'free'];
+
 const renderIcon = ({ icon }) => {
   if (!icon) return null;
   return <Icon type={icon} />;
@@ -25,11 +27,18 @@ const menus = [
 ];
 
 function Demo() {
-  const [collapse, setCollapse] = React.useState(true);
+  const [siderStatus, setSiderStatus] = React.useState(2);
   const [float, setFloat] = React.useState(false);
   const [blur, setBlur] = React.useState(false);
   const [fixedHeader, setFixedHeader] = React.useState(true);
-  const [contentWidth, setContentWidth] = React.useState('fixed');
+  const [contentWidth, setContentWidth] = React.useState('fluid');
+
+  const siderState = React.useMemo(() => {
+    let index = siderStatus;
+    index = index <= 0 ? siderStatusList.length : index;
+    index = index >= siderStatusList.length ? 0 : index;
+    return { index, status: siderStatusList[index] };
+  }, [siderStatus]);
 
   const onMenuClick = (item) => {
     console.log(item);
@@ -38,56 +47,48 @@ function Demo() {
   return (
     <React.Fragment>
       <div style={{ position: 'fixed', bottom: 32, right: 32, zIndex: 999, display: 'flex', gap: 8 }}>
-        <button onClick={() => setCollapse(!collapse)}>collapse</button>
+        <button onClick={() => setSiderStatus(siderState.index + 1)}>{siderState.status}</button>
         <button onClick={() => setFloat(!float)}>float</button>
         <button onClick={() => setBlur(!blur)}>blur</button>
         <button onClick={() => setFixedHeader(!fixedHeader)}>fixedHeader</button>
         <button onClick={() => setContentWidth(contentWidth === 'fixed' ? 'fluid' : 'fixed')}>contentWidth</button>
       </div>
-      <LayoutSite.Sider
-        // inner
-        open={collapse}
-        header={<BlockTitle logo="/logo.png" title="Test Balabala System" direction="horizontal" />}
-        body={<div style={{ height: 2000 }}>侧边栏</div>}
-        footer={
+      <LayoutSite
+        float={float}
+        blur={blur}
+        fixedHeader={fixedHeader}
+        contentWidth={contentWidth}
+        // heightLayoutHeader={48}
+        renderTitle={<BlockTitle logo="/logo.png" title="Test Balabala System" direction="horizontal" />}
+        renderMenu={<BlockMenu blur={blur} location={location} routes={routes} renderIcon={renderIcon} />}
+        renderButton={
+          <>
+            <span title="查询" style={{ paddingInline: 8 }}>
+              <Icon type="icon-chazhao" />
+            </span>
+            <span title="通知" style={{ paddingInline: 8 }}>
+              <Icon type="icon-xiaoxi" />
+            </span>
+          </>
+        }
+        renderExtra={
           <BlockUser
             icon={'icon'}
             username={'admin'}
             role={'admin'}
             menus={menus}
+            menuHeader={'菜单头部'}
             renderIcon={renderIcon}
             onMenuClick={onMenuClick}
           />
         }
       >
-        <LayoutSite
-          float={float}
-          blur={blur}
-          fixedHeader={fixedHeader}
-          contentWidth={contentWidth}
-          // heightLayoutHeader={48}
-          // renderTitle={<BlockTitle logo="/logo.png" title="Test Balabala System" direction="horizontal" />}
-          renderMenu={<BlockMenu blur={blur} location={location} routes={routes} renderIcon={renderIcon} />}
-          renderButton={
-            <>
-              <span title="查询" style={{ paddingInline: 8 }}>
-                <Icon type="icon-chazhao" />
-              </span>
-              <span title="通知" style={{ paddingInline: 8 }}>
-                <Icon type="icon-xiaoxi" />
-              </span>
-            </>
-          }
-          // renderExtra={
-          //   <BlockUser
-          //     icon={'icon'}
-          //     username={'admin'}
-          //     role={'admin'}
-          //     menus={menus}
-          //     renderIcon={renderIcon}
-          //     onMenuClick={onMenuClick}
-          //   />
-          // }
+        <LayoutSite.Sider
+          status={siderState.status}
+          rift={'顶栏冲突区域'}
+          header={<div style={{ height: 100 }}>顶部区域</div>}
+          body={<div style={{ height: 2000 }}>侧边内容</div>}
+          footer={<div style={{ height: 100 }}>底部区域</div>}
         >
           <div style={{ padding: '24px' }}>
             <h1 style={{ marginTop: 0 }}>PageHome</h1>
@@ -100,8 +101,8 @@ function Demo() {
               </Card>
             ))}
           </div>
-        </LayoutSite>
-      </LayoutSite.Sider>
+        </LayoutSite.Sider>
+      </LayoutSite>
     </React.Fragment>
   );
 }

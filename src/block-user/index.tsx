@@ -3,7 +3,7 @@ import React from 'react';
 import useStyles from './styles';
 
 const BlockUser: React.FC<any> = (props) => {
-  const { avatar, username, role, menus, style, onMenuClick, renderIcon } = props;
+  const { avatar, username, role, menus, menuHeader, style, onMenuClick, renderIcon } = props;
   const { styles, cx } = useStyles();
 
   return (
@@ -21,18 +21,21 @@ const BlockUser: React.FC<any> = (props) => {
       </div>
       {Array.isArray(menus) && (
         <div className={cx(styles, 'block-user-menu')}>
-          <ul className={cx(styles, 'block-user-menu-list')}>
-            {menus.map((item: any) => {
-              return (
-                <li className={cx(styles, 'block-user-menu-item')} onClick={() => onMenuClick?.(item)} key={item.key}>
-                  {item.icon && (
-                    <span className={cx(styles, 'block-user-menu-item-icon')}>{renderIcon?.(item) || item.icon}</span>
-                  )}
-                  <span className={cx(styles, 'block-user-menu-item-label')}>{item.label}</span>
-                </li>
-              );
-            })}
-          </ul>
+          <div className={cx(styles, 'block-user-menu-panel')}>
+            {menuHeader}
+            <ul className={cx(styles, 'block-user-menu-list')}>
+              {menus.map((item: any) => {
+                return (
+                  <li className={cx(styles, 'block-user-menu-item')} onClick={() => onMenuClick?.(item)} key={item.key}>
+                    {item.icon && (
+                      <span className={cx(styles, 'block-user-menu-item-icon')}>{renderIcon?.(item) || item.icon}</span>
+                    )}
+                    <span className={cx(styles, 'block-user-menu-item-label')}>{item.label}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       )}
     </div>

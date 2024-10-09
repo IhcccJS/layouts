@@ -22,7 +22,7 @@ export default createStyles(
           height: 40px;
           border-radius: 50%;
           background: var(--color-bg-placeholder, #9ca3af);
-          border: 2px solid #fff;
+          border: 2px solid var(--color-border, #d9d9d9);
           padding: 4px;
           box-sizing: border-box;
           box-shadow: ${token.boxShadowTertiary};
@@ -36,6 +36,7 @@ export default createStyles(
         }
 
         &-name {
+          color: var(--color-text, #ffffff);
           font-weight: bold;
           font-size: 16px;
         }
@@ -48,7 +49,7 @@ export default createStyles(
 
         &-role {
           padding: 0 4px;
-          background: #3a84c0;
+          background: var(--color-primary);
           border-radius: 4px;
         }
 
@@ -61,21 +62,25 @@ export default createStyles(
           z-index: 990;
           display: none;
 
-          &-list {
-            min-width: 120px;
+          &-panel {
             padding: 4px;
             border-radius: 6px;
             background: var(--color-bg-popover, #1e293b);
+            box-shadow: ${token.boxShadowSecondary};
+          }
+
+          &-list {
+            min-width: 120px;
             list-style: none;
             margin-block: 0;
-            box-shadow: ${token.boxShadowSecondary};
+            padding-inline-start: 0;
           }
 
           &-item {
             position: relative;
             display: flex;
             align-items: center;
-            padding: 4px 32px;
+            padding: 4px 0 4px 32px;
             border-radius: 6px;
             white-space: nowrap;
             cursor: pointer;
@@ -83,7 +88,7 @@ export default createStyles(
 
             &-icon {
               position: absolute;
-              left: 4px;
+              left: 8px;
               line-height: 14px;
               font-size: 16px;
             }

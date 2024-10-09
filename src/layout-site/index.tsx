@@ -1,5 +1,6 @@
 import React from 'react';
 import Sider from './sider';
+import { LayoutContext, LayoutSiderContext } from './context';
 import useStyles from './styles';
 
 const Layout: React.FC<any> = (props) => {
@@ -18,45 +19,57 @@ const Layout: React.FC<any> = (props) => {
     ...restProps
   } = props;
   const { styles, cx } = useStyles();
+  const { status } = React.useContext(LayoutSiderContext);
 
   return (
-    <div
-      className={cx(
-        styles,
-        'layout',
-        (contentWidth === 'fixed' || contentWidth?.header === 'fixed') && 'header-width-fixed',
-        (contentWidth === 'fixed' || contentWidth?.content === 'fixed') && 'content-width-fixed',
-        className,
-      )}
-      {...restProps}
-    >
-      <header
-        className={cx(styles, 'main-header', fixedHeader && 'fixed', float && 'float', blur && 'blur')}
-        style={{ height: heightLayoutHeader }}
+    <LayoutContext.Provider value={{ fixedHeader, float, contentWidth }}>
+      <div
+        className={cx(
+          styles,
+          'layout',
+          status === 'collapse' && 'layout-side-collapse',
+          status === 'open' && 'layout-side-open',
+          (contentWidth === 'fixed' || contentWidth?.header === 'fixed') && 'header-width-fixed',
+          (contentWidth === 'fixed' || contentWidth?.content === 'fixed') && 'content-width-fixed',
+          className,
+        )}
+        {...restProps}
       >
-        <div className={cx(styles, 'header-content')}>
-          <div className={cx(styles, 'left-content')}>{renderTitle}</div>
-          {(renderMenu || renderExtra) && (
-            <React.Fragment>
-              <input id="menu" className={cx(styles, 'toggle-view')} type="checkbox" />
-              <label htmlFor="menu"></label>
-              <div className={cx(styles, 'header-content-view')}>
-                <div className={cx(styles, 'header-menu-nav')}>{renderMenu}</div>
-                {renderButton && <div className={cx(styles, 'header-menu-button')}>{renderButton}</div>}
-                {renderExtra && <div className={cx(styles, 'header-menu-extra')}>{renderExtra}</div>}
-              </div>
-            </React.Fragment>
-          )}
-        </div>
-      </header>
-      {fixedHeader && (
         <header
-          className={cx(styles, 'main-header-placeholder', float && 'float')}
+          className={cx(
+            styles,
+            'main-header',
+            fixedHeader && 'main-header-fixed',
+            float && 'main-header-float',
+            blur && 'main-header-blur',
+          )}
           style={{ height: heightLayoutHeader }}
-        />
-      )}
-      <main className={cx(styles, 'main-body')}>{children}</main>
-    </div>
+        >
+          <div className={cx(styles, 'header-content')}>
+            <div className={cx(styles, 'header-left-content')}>{renderTitle}</div>
+            {(renderMenu || renderExtra) && (
+              <React.Fragment>
+                <label htmlFor="menu">
+                  <input id="menu" className={cx(styles, 'toggle-view')} type="checkbox" />
+                </label>
+                <div className={cx(styles, 'header-content-view')}>
+                  <div className={cx(styles, 'header-menu-nav')}>{renderMenu}</div>
+                  {renderButton && <div className={cx(styles, 'header-menu-button')}>{renderButton}</div>}
+                  {renderExtra && <div className={cx(styles, 'header-menu-extra')}>{renderExtra}</div>}
+                </div>
+              </React.Fragment>
+            )}
+          </div>
+        </header>
+        {fixedHeader && (
+          <header
+            className={cx(styles, 'main-header-placeholder', float && 'main-header-placeholder-float')}
+            style={{ height: heightLayoutHeader }}
+          />
+        )}
+        <main className={cx(styles, 'main-body')}>{children}</main>
+      </div>
+    </LayoutContext.Provider>
   );
 };
 

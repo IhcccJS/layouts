@@ -17,12 +17,14 @@ export default createStyles(
         background-position: center bottom;
 
         .main-header {
+          position: relative;
           padding-inline: ${token.paddingContentHorizontal}px;
           display: flex;
           justify-content: center;
           background-color: var(--color-bg-layout-header, #1e293b);
           background-image: var(--image-bg-layout-header, unset);
           background-size: cover;
+          z-index: var(--z-index-header, 200);
 
           .header-content {
             width: 100%;
@@ -31,7 +33,7 @@ export default createStyles(
             box-sizing: border-box;
           }
 
-          .left-content {
+          .header-left-content {
             height: 100%;
             display: flex;
             align-items: center;
@@ -86,21 +88,20 @@ export default createStyles(
             align-items: center;
           }
 
-          &.fixed {
+          &-fixed {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: var(--z-index-header, 200);
             box-shadow: ${token.boxShadowTertiary};
           }
 
-          &.blur {
+          &-blur {
             background-color: var(--color-bg-blur, rgba(55, 65, 81, 0.4));
             backdrop-filter: blur(8px);
           }
 
-          &.float {
+          &-float {
             background-color: transparent;
 
             .header-content {
@@ -108,22 +109,22 @@ export default createStyles(
               border-radius: ${token.borderRadiusLG}px;
               background-color: var(--color-bg-layout-header, #1e293b);
             }
+          }
 
-            &.fixed {
-              box-shadow: none;
+          &-float.main-header-fixed {
+            box-shadow: none;
 
-              .header-content {
-                box-shadow: ${token.boxShadowSecondary};
-              }
+            .header-content {
+              box-shadow: ${token.boxShadowSecondary};
             }
+          }
 
-            &.blur {
-              backdrop-filter: none;
+          &-float.main-header-blur {
+            backdrop-filter: none;
 
-              .header-content {
-                background-color: var(--color-bg-blur, rgba(55, 65, 81, 0.4));
-                backdrop-filter: blur(8px);
-              }
+            .header-content {
+              background-color: var(--color-bg-blur, rgba(55, 65, 81, 0.4));
+              backdrop-filter: blur(8px);
             }
           }
         }
@@ -132,8 +133,20 @@ export default createStyles(
         .main-header-placeholder {
           height: var(--size-layout-header-height, ${headerHeight});
 
-          &.float {
+          &-float {
             padding-block: ${token.paddingContentVerticalLG}px;
+          }
+        }
+
+        &-side-collapse {
+          .main-header.main-header-fixed {
+            left: var(--size-layout-side-collapse-width, 80px);
+          }
+        }
+
+        &-side-open {
+          .main-header.main-header-fixed {
+            left: var(--size-layout-side-open-width, 256px);
           }
         }
 
