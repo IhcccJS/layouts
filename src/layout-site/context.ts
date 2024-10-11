@@ -3,7 +3,7 @@ import React from 'react';
 export const LayoutContext = React.createContext<{
   fixedHeader: boolean;
   float: boolean;
-  contentWidth?: 'fixed' | 'fluid' | { header?: 'fixed'; content?: 'fixed' } | boolean;
-}>({ fixedHeader: false, float: false, contentWidth: false });
+  contentWidth: { header?: 'fixed'; content?: 'fixed' } | 'fixed' | 'fluid';
+}>({ fixedHeader: false, float: false, contentWidth: 'fluid' });
 
 export const LayoutSiderContext = React.createContext<{ status?: string }>({});

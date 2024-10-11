@@ -26,6 +26,46 @@ export default createStyles(
           background-size: cover;
           z-index: var(--z-index-header, 200);
 
+          &-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-shadow: ${token.boxShadowTertiary};
+          }
+
+          &-blur {
+            background-color: var(--color-bg-blur, rgba(55, 65, 81, 0.4));
+            backdrop-filter: blur(8px);
+          }
+
+          &-float {
+            background-color: transparent;
+
+            .header-content {
+              padding-inline: var(--size-cell-gap, 16px);
+              border-radius: var(--size-border-radius-lg, 8px);
+              background-color: var(--color-bg-layout-header, #1e293b);
+            }
+          }
+
+          &-float.main-header-fixed {
+            box-shadow: none;
+
+            .header-content {
+              box-shadow: ${token.boxShadowSecondary};
+            }
+          }
+
+          &-float.main-header-blur {
+            backdrop-filter: none;
+
+            .header-content {
+              background-color: var(--color-bg-blur, rgba(55, 65, 81, 0.4));
+              backdrop-filter: blur(8px);
+            }
+          }
+
           .header-content {
             width: 100%;
             display: flex;
@@ -87,46 +127,6 @@ export default createStyles(
             display: flex;
             align-items: center;
           }
-
-          &-fixed {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            box-shadow: ${token.boxShadowTertiary};
-          }
-
-          &-blur {
-            background-color: var(--color-bg-blur, rgba(55, 65, 81, 0.4));
-            backdrop-filter: blur(8px);
-          }
-
-          &-float {
-            background-color: transparent;
-
-            .header-content {
-              padding-inline: ${token.paddingContentHorizontal}px;
-              border-radius: ${token.borderRadiusLG}px;
-              background-color: var(--color-bg-layout-header, #1e293b);
-            }
-          }
-
-          &-float.main-header-fixed {
-            box-shadow: none;
-
-            .header-content {
-              box-shadow: ${token.boxShadowSecondary};
-            }
-          }
-
-          &-float.main-header-blur {
-            backdrop-filter: none;
-
-            .header-content {
-              background-color: var(--color-bg-blur, rgba(55, 65, 81, 0.4));
-              backdrop-filter: blur(8px);
-            }
-          }
         }
 
         .main-header,
@@ -134,7 +134,7 @@ export default createStyles(
           height: var(--size-layout-header-height, ${headerHeight});
 
           &-float {
-            padding-block: ${token.paddingContentVerticalLG}px;
+            padding-block: var(--size-cell-gap, 16px);
           }
         }
 

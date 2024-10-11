@@ -12,7 +12,7 @@ import routes from './routes';
   document.documentElement.setAttribute('data-theme', 'defaultDark');
 })();
 
-const siderStatusList = ['close', 'collapse', 'open', 'expand', 'halfScreen', 'fullScreen', 'free'];
+const siderStatusList = ['close', 'collapse', 'open', 'expand', 'half', 'full', 'free'];
 
 const renderIcon = ({ icon }) => {
   if (!icon) return null;
@@ -26,7 +26,12 @@ const menus = [
   { key: 'logout', label: '退出登录', icon: 'icon-tuisong' },
 ];
 
+const primaryStyle = (state) => {
+  if (state) return { background: 'var(--color-primary)', border: '1px solid var(--color-primary)' };
+};
+
 function Demo() {
+  const [autoClose, setAutoClose] = React.useState(false);
   const [siderStatus, setSiderStatus] = React.useState(2);
   const [float, setFloat] = React.useState(false);
   const [blur, setBlur] = React.useState(false);
@@ -47,11 +52,22 @@ function Demo() {
   return (
     <React.Fragment>
       <div style={{ position: 'fixed', bottom: 32, right: 32, zIndex: 999, display: 'flex', gap: 8 }}>
+        <button style={primaryStyle(autoClose)} onClick={() => setAutoClose(!autoClose)}>
+          autoClose
+        </button>
         <button onClick={() => setSiderStatus(siderState.index + 1)}>{siderState.status}</button>
-        <button onClick={() => setFloat(!float)}>float</button>
-        <button onClick={() => setBlur(!blur)}>blur</button>
-        <button onClick={() => setFixedHeader(!fixedHeader)}>fixedHeader</button>
-        <button onClick={() => setContentWidth(contentWidth === 'fixed' ? 'fluid' : 'fixed')}>contentWidth</button>
+        <button style={primaryStyle(float)} onClick={() => setFloat(!float)}>
+          float
+        </button>
+        <button style={primaryStyle(blur)} onClick={() => setBlur(!blur)}>
+          blur
+        </button>
+        <button style={primaryStyle(fixedHeader)} onClick={() => setFixedHeader(!fixedHeader)}>
+          fixedHeader
+        </button>
+        <button onClick={() => setContentWidth(contentWidth === 'fixed' ? 'fluid' : 'fixed')}>
+          contentWidth: {contentWidth}
+        </button>
       </div>
       <LayoutSite
         float={float}
@@ -84,13 +100,20 @@ function Demo() {
         }
       >
         <LayoutSite.Sider
+          float={float}
+          autoClose={autoClose}
           status={siderState.status}
+          renderHandlerIcon={
+            <span style={{ fontSize: 12, transform: 'rotateZ(90deg)' }}>
+              <Icon type="icon-up" />
+            </span>
+          }
           rift={'顶栏冲突区域'}
           header={<div style={{ height: 100 }}>顶部区域</div>}
           body={<div style={{ height: 2000 }}>侧边内容</div>}
           footer={<div style={{ height: 100 }}>底部区域</div>}
         >
-          <div style={{ padding: '24px' }}>
+          <div style={{ padding: 16 }}>
             <h1 style={{ marginTop: 0 }}>PageHome</h1>
             {new Array(10).fill(0).map((_, index) => (
               <Card key={index}>
