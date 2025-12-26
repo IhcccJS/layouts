@@ -69,7 +69,6 @@ export default createStyles(
         .page-content {
           flex: 1;
           box-sizing: border-box;
-          overflow: hidden;
         }
 
         &-float .page-side {

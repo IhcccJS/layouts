@@ -1,6 +1,6 @@
 {
   "name": "@ihccc/layouts",
-  "version": "0.1.0",
+  "version": "0.1.1-local.1",
   "description": "React layout components library.",
   "license": "MIT",
   "main": "./lib/index.js",
@@ -52,7 +52,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "registry": "http://127.0.0.1:4873/"
   },
   "authors": [
     "ihccc-cn <lccc10588@gmail.com>"

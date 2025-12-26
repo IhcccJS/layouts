@@ -18,9 +18,6 @@ export default createStyles(
 
         .main-header {
           position: relative;
-          padding-inline: ${token.paddingContentHorizontal}px;
-          display: flex;
-          justify-content: center;
           background-color: var(--color-bg-layout-header, #1e293b);
           background-image: var(--image-bg-layout-header, unset);
           background-size: cover;
@@ -70,10 +67,11 @@ export default createStyles(
             width: 100%;
             display: flex;
             justify-content: space-between;
+            padding-inline: ${token.paddingContentHorizontal}px;
             box-sizing: border-box;
           }
 
-          .header-left-content {
+          .header-content-left {
             height: 100%;
             display: flex;
             align-items: center;

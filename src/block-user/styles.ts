@@ -6,13 +6,13 @@ export default createStyles(
       &.block-user {
         position: relative;
         width: 100%;
-        min-width: 120px;
 
         &-box {
           padding: 4px 8px;
           border-radius: 8px;
           display: flex;
           align-items: center;
+          gap: var(--size-cell-gap, 16px);
           box-sizing: border-box;
           cursor: pointer;
         }
@@ -20,11 +20,11 @@ export default createStyles(
         &-avatar {
           width: 40px;
           height: 40px;
-          border-radius: 50%;
-          background: var(--color-bg-placeholder, #9ca3af);
+          display: flex;
+          align-items: center;
+          justify-content: center;
           border: 2px solid var(--color-border, #d9d9d9);
-          padding: 4px;
-          box-sizing: border-box;
+          border-radius: var(--size-border-radius-lg, 8px);
           box-shadow: ${token.boxShadowTertiary};
           overflow: hidden;
         }
@@ -32,7 +32,6 @@ export default createStyles(
         &-info {
           display: flex;
           flex-direction: column;
-          margin-left: 16px;
         }
 
         &-name {
@@ -56,15 +55,17 @@ export default createStyles(
         &-menu {
           position: absolute;
           top: 100%;
-          left: 50%;
-          transform: translateX(-50%);
+          right: 0;
           padding-top: 12px;
-          z-index: 990;
-          display: none;
+          transform: translateY(-10px);
+          visibility: hidden;
+          opacity: 0;
+          z-index: -1;
+          transition: 0.3s ease 0.15s;
 
           &-panel {
             padding: 4px;
-            border-radius: 6px;
+            border-radius: var(--size-border-radius, 4px);
             background: var(--color-bg-popover, #1e293b);
             box-shadow: ${token.boxShadowSecondary};
           }
@@ -81,14 +82,14 @@ export default createStyles(
             display: flex;
             align-items: center;
             padding: 4px 0 4px 32px;
-            border-radius: 6px;
+            border-radius: var(--size-border-radius, 4px);
             white-space: nowrap;
             cursor: pointer;
             transition: 0.1s ease-in-out;
 
             &-icon {
               position: absolute;
-              left: 8px;
+              left: 4px;
               line-height: 14px;
               font-size: 16px;
             }
@@ -113,7 +114,10 @@ export default createStyles(
 
         &-box:hover + &-menu,
         &-menu:hover {
-          display: block;
+          transform: translateY(0);
+          visibility: visible;
+          opacity: 1;
+          z-index: 999;
         }
       }
 

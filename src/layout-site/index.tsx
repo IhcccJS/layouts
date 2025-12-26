@@ -10,6 +10,7 @@ const Layout: React.FC<any> = (props) => {
     float,
     blur,
     contentWidth,
+    renderTop,
     renderTitle,
     renderMenu,
     renderButton,
@@ -45,8 +46,9 @@ const Layout: React.FC<any> = (props) => {
           )}
           style={{ height: heightLayoutHeader }}
         >
+          {renderTop}
           <div className={cx(styles, 'header-content')}>
-            <div className={cx(styles, 'header-left-content')}>{renderTitle}</div>
+            <div className={cx(styles, 'header-content-left')}>{renderTitle}</div>
             {(renderMenu || renderExtra) && (
               <React.Fragment>
                 <label htmlFor="menu">

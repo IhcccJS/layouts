@@ -75,6 +75,7 @@ function Demo() {
         fixedHeader={fixedHeader}
         contentWidth={contentWidth}
         // heightLayoutHeader={48}
+        renderTop={<div style={{ background: '#F44336', paddingBlock: 4, textAlign: 'center' }}>Hello!</div>}
         renderTitle={<BlockTitle logo="/logo.png" title="Test Balabala System" direction="horizontal" />}
         renderMenu={<BlockMenu blur={blur} location={location} routes={routes} renderIcon={renderIcon} />}
         renderButton={
@@ -90,7 +91,8 @@ function Demo() {
         renderExtra={
           <BlockUser
             icon={'icon'}
-            username={'admin'}
+            avatar={'avatar'}
+            username={'name'}
             role={'admin'}
             menus={menus}
             menuHeader={'菜单头部'}
@@ -98,6 +100,7 @@ function Demo() {
             onMenuClick={onMenuClick}
           />
         }
+        style={{ '--size-layout-header-height': 80 }}
       >
         <LayoutSite.Sider
           float={float}
