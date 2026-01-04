@@ -35,7 +35,6 @@ export default createStyles(
         }
 
         &-name {
-          color: var(--color-text, #ffffff);
           font-weight: bold;
           font-size: 16px;
         }
@@ -67,6 +66,7 @@ export default createStyles(
             padding: 4px;
             border-radius: var(--size-border-radius, 4px);
             background: var(--color-bg-popover, #1e293b);
+            color: var(--color-text, #393939);
             box-shadow: ${token.boxShadowSecondary};
           }
 

@@ -19,12 +19,12 @@ const Copyright: React.FC<any> = ({ icon, text }) => {
 const Layout: React.FC<any> = (props) => {
   const {
     className,
-    float,
+    float = false,
     align,
-    blur,
+    blur = false,
     bordered,
     blocked,
-    centered,
+    centered = false,
     titleOutside,
     logo,
     title,
@@ -66,13 +66,6 @@ const Layout: React.FC<any> = (props) => {
       <div className={cx(styles, 'container')}>{renderContainer ? renderContainer(content) : content}</div>
     </div>
   );
-};
-
-Layout.defaultProps = {
-  float: false,
-  blur: false,
-  centered: false,
-  title: 'Show your system name in "title"',
 };
 
 (Layout as any).Copyright = Copyright;

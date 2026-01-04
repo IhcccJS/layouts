@@ -9,7 +9,7 @@ function Demo() {
       className="customStyle"
       blur
       align="right"
-      logo="/logo.png"
+      logo={BASE_PATH + '/logo.png'}
       title="Test Balabala System"
       subTitle="Welcome back~"
       sideContent={<div style={{ padding: 32 }}>sideContent</div>}

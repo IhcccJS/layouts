@@ -120,8 +120,4 @@ const BlockMenu: React.FC<any> = (props) => {
   );
 };
 
-BlockMenu.defaultProps = {
-  title: 'Show your system name in "title"',
-};
-
 export default BlockMenu;

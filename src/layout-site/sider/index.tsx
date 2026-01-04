@@ -27,7 +27,7 @@ const Sider: React.FC<any> = (props) => {
 
   return (
     <LayoutSiderContext.Provider value={{ status }}>
-      <div
+      <aside
         className={cx(
           styles,
           float && 'layout-with-float',
@@ -43,19 +43,19 @@ const Sider: React.FC<any> = (props) => {
           className={cx(
             styles,
             'page-side',
+            'page-side-style',
             siderFloat && 'page-side-float',
             fixedHeader && float && contentWidth !== 'fixed' && 'page-side-float-top',
           )}
+          {...restProps}
         >
-          <nav className={cx(styles, 'page-side-content', 'page-side-style')} {...restProps}>
-            {((contentWidth !== 'fixed' && !fixedHeader) || !float || !siderFloat) && (
-              <div className={cx(styles, 'page-side-rift')}>{rift}</div>
-            )}
-            {header && <div className={cx(styles, 'page-side-header')}>{header}</div>}
-            <div className={cx(styles, 'page-side-body')}>{body}</div>
-            {footer && <div className={cx(styles, 'page-side-footer')}>{footer}</div>}
-          </nav>
-          {autoClose && <div className={cx(styles, 'page-side-handler')}>{renderHandlerIcon}</div>}
+          {((contentWidth !== 'fixed' && !fixedHeader) || !float || !siderFloat) && (
+            <div className={cx(styles, 'page-side-rift')}>{rift}</div>
+          )}
+          {header && <div className={cx(styles, 'page-side-header')}>{header}</div>}
+          <div className={cx(styles, 'page-side-body')}>{body}</div>
+          {footer && <div className={cx(styles, 'page-side-footer')}>{footer}</div>}
+          {autoClose && renderHandlerIcon && <div className={cx(styles, 'page-side-handler')}>{renderHandlerIcon}</div>}
         </div>
         {(!contentWidth ||
           contentWidth === 'fluid' ||
@@ -63,7 +63,7 @@ const Sider: React.FC<any> = (props) => {
           <div className={cx(styles, 'page-side-placeholder')} />
         )}
         <div className={cx(styles, 'page-content')}>{children}</div>
-      </div>
+      </aside>
     </LayoutSiderContext.Provider>
   );
 };

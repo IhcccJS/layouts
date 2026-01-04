@@ -14,7 +14,7 @@ function Demo() {
       blocked
       centered
       align={signin ? 'right' : 'left'}
-      logo="/logo.png"
+      logo={BASE_PATH + '/logo.png'}
       title="Test Balabala System"
       sideContent={<div style={{ padding: 32 }}>sideContent</div>}
       footer={<LayoutLogin.Copyright text="2020-2023 Test Balabala" />}

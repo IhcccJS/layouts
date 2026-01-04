@@ -1,21 +1,14 @@
 import React from 'react';
 import { LayoutLogin } from '@ihccc/layouts';
-import { loadCss } from '@ihccc/utils';
-import useStateBar from './useStateBar';
+import useControl from './useControl';
 import LoginForm from './form';
 
-(() => {
-  // 加载主题变量
-  loadCss('/default-dark.css');
-  document.documentElement.setAttribute('data-theme', 'defaultDark');
-})();
-
 function Demo() {
-  const { view, float, blur, blocked, bordered, centered, align } = useStateBar();
+  const { controlView, float, blur, blocked, bordered, centered, align } = useControl();
 
   return (
     <React.Fragment>
-      {view}
+      {controlView}
       <LayoutLogin
         titleOutside
         float={float}
@@ -24,7 +17,7 @@ function Demo() {
         bordered={bordered}
         centered={centered}
         align={align}
-        logo="/logo.png"
+        logo={BASE_PATH + '/logo.png'}
         title="Test Balabala System"
         subTitle="Welcome back~"
         sideContent={'sideContent'}

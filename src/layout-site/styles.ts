@@ -9,15 +9,16 @@ export default createStyles(
       &.layout {
         position: relative;
         min-height: 100vh;
-        color: var(--color-text, #f8fafc);
         background-color: var(--color-bg, #020617);
         background-image: var(--image-bg-layout-body, unset);
         background-attachment: fixed;
         background-size: cover;
         background-position: center bottom;
+        color: var(--color-text, #393939);
 
         .main-header {
           position: relative;
+          margin: 0 auto;
           background-color: var(--color-bg-layout-header, #1e293b);
           background-image: var(--image-bg-layout-header, unset);
           background-size: cover;
@@ -64,15 +65,15 @@ export default createStyles(
           }
 
           .header-content {
-            width: 100%;
+            max-width: 100%;
             display: flex;
             justify-content: space-between;
             padding-inline: ${token.paddingContentHorizontal}px;
             box-sizing: border-box;
+            margin: 0 auto;
           }
 
           .header-content-left {
-            height: 100%;
             display: flex;
             align-items: center;
           }
@@ -136,17 +137,17 @@ export default createStyles(
           }
         }
 
-        &-side-collapse {
-          .main-header.main-header-fixed {
-            left: var(--size-layout-side-collapse-width, 80px);
-          }
-        }
+        // &-side-collapse {
+        //   .main-header.main-header-fixed {
+        //     left: var(--size-layout-side-collapse-width, 80px);
+        //   }
+        // }
 
-        &-side-open {
-          .main-header.main-header-fixed {
-            left: var(--size-layout-side-open-width, 256px);
-          }
-        }
+        // &-side-open {
+        //   .main-header.main-header-fixed {
+        //     left: var(--size-layout-side-open-width, 256px);
+        //   }
+        // }
 
         .main-body {
           width: 100%;

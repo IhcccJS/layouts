@@ -11,7 +11,7 @@ LayoutLogin 登录页布局组件
 
 ## 替换背景
 
-使用准确的样式类名覆盖 css 样式
+使用类名覆盖 css 样式
 
 <code src="./demo/demo-background.jsx" iframe="580" background="#f5f5f5"></code>
 

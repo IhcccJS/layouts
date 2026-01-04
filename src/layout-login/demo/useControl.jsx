@@ -2,7 +2,7 @@ import React from 'react';
 
 const alignOptions = ['left', 'center', 'right'];
 
-function useStateBar() {
+function useControl() {
   const [float, setFloat] = React.useState(false);
   const [blur, setBlur] = React.useState(false);
   const [blocked, setBlocked] = React.useState(false);
@@ -10,7 +10,7 @@ function useStateBar() {
   const [centered, setCentered] = React.useState(false);
   const [align, setAlign] = React.useState(1);
 
-  const view = (
+  const controlView = (
     <div style={{ position: 'absolute', bottom: 32, right: 32, zIndex: 90 }}>
       <button onClick={() => setFloat(!float)}>float</button>
       <button onClick={() => setBlur(!blur)}>blur</button>
@@ -22,7 +22,7 @@ function useStateBar() {
   );
 
   return {
-    view,
+    controlView,
     float,
     blur,
     blocked,
@@ -32,4 +32,4 @@ function useStateBar() {
   };
 }
 
-export default useStateBar;
+export default useControl;

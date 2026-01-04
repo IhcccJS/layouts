@@ -1,18 +1,8 @@
 import React from 'react';
 import { LayoutSite, BlockTitle, BlockMenu, BlockUser, Card } from '@ihccc/layouts';
-import { loadCss, loadScript } from '@ihccc/utils';
+import useControl from './useControl';
 import Icon from './icon';
 import routes from './routes';
-
-(() => {
-  // 加载图标库
-  loadScript('/font_3310509_jrhf4hrcd78.js');
-  // 加载主题变量
-  loadCss('/default-dark.css');
-  document.documentElement.setAttribute('data-theme', 'defaultDark');
-})();
-
-const siderStatusList = ['close', 'collapse', 'open', 'expand', 'half', 'full', 'free'];
 
 const renderIcon = ({ icon }) => {
   if (!icon) return null;
@@ -25,25 +15,8 @@ const menus = [
   { key: 'setting', label: '系统设置', icon: 'icon-shezhi' },
   { key: 'logout', label: '退出登录', icon: 'icon-tuisong' },
 ];
-
-const primaryStyle = (state) => {
-  if (state) return { background: 'var(--color-primary)', border: '1px solid var(--color-primary)' };
-};
-
 function Demo() {
-  const [autoClose, setAutoClose] = React.useState(false);
-  const [siderStatus, setSiderStatus] = React.useState(2);
-  const [float, setFloat] = React.useState(false);
-  const [blur, setBlur] = React.useState(false);
-  const [fixedHeader, setFixedHeader] = React.useState(true);
-  const [contentWidth, setContentWidth] = React.useState('fluid');
-
-  const siderState = React.useMemo(() => {
-    let index = siderStatus;
-    index = index <= 0 ? siderStatusList.length : index;
-    index = index >= siderStatusList.length ? 0 : index;
-    return { index, status: siderStatusList[index] };
-  }, [siderStatus]);
+  const { controlView, autoClose, siderState, float, blur, fixedHeader, contentWidth } = useControl();
 
   const onMenuClick = (item) => {
     console.log(item);
@@ -51,32 +24,32 @@ function Demo() {
 
   return (
     <React.Fragment>
-      <div style={{ position: 'fixed', bottom: 32, right: 32, zIndex: 999, display: 'flex', gap: 8 }}>
-        <button style={primaryStyle(autoClose)} onClick={() => setAutoClose(!autoClose)}>
-          autoClose
-        </button>
-        <button onClick={() => setSiderStatus(siderState.index + 1)}>{siderState.status}</button>
-        <button style={primaryStyle(float)} onClick={() => setFloat(!float)}>
-          float
-        </button>
-        <button style={primaryStyle(blur)} onClick={() => setBlur(!blur)}>
-          blur
-        </button>
-        <button style={primaryStyle(fixedHeader)} onClick={() => setFixedHeader(!fixedHeader)}>
-          fixedHeader
-        </button>
-        <button onClick={() => setContentWidth(contentWidth === 'fixed' ? 'fluid' : 'fixed')}>
-          contentWidth: {contentWidth}
-        </button>
-      </div>
+      {controlView}
+
+      {/* <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          width: '100%',
+          background: '#F44336',
+          color: '#fff',
+          paddingBlock: 4,
+          textAlign: 'center',
+          zIndex: 999,
+        }}
+      >
+        Hello!
+      </div> */}
       <LayoutSite
         float={float}
         blur={blur}
         fixedHeader={fixedHeader}
         contentWidth={contentWidth}
-        // heightLayoutHeader={48}
-        renderTop={<div style={{ background: '#F44336', paddingBlock: 4, textAlign: 'center' }}>Hello!</div>}
-        renderTitle={<BlockTitle logo="/logo.png" title="Test Balabala System" direction="horizontal" />}
+        style={{ '--size-layout-header-height': '80px' }}
+        renderTop={
+          <div style={{ background: '#F44336', color: '#fff', paddingBlock: 4, textAlign: 'center' }}>Hello!</div>
+        }
+        renderTitle={<BlockTitle logo={BASE_PATH + '/logo.png'} title="Test Balabala System" direction="horizontal" />}
         renderMenu={<BlockMenu blur={blur} location={location} routes={routes} renderIcon={renderIcon} />}
         renderButton={
           <>
@@ -95,12 +68,17 @@ function Demo() {
             username={'name'}
             role={'admin'}
             menus={menus}
-            menuHeader={'菜单头部'}
+            menuRender={(menuDom) => (
+              <div style={{ width: 200 }}>
+                <div style={{ borderBottom: '1px solid var(--color-border)' }}>头部</div>
+                <div style={{ paddingBlock: 8 }}>{menuDom}</div>
+                <div style={{ borderTop: '1px solid var(--color-border)' }}>尾部</div>
+              </div>
+            )}
             renderIcon={renderIcon}
             onMenuClick={onMenuClick}
           />
         }
-        style={{ '--size-layout-header-height': 80 }}
       >
         <LayoutSite.Sider
           float={float}

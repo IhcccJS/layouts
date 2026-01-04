@@ -17,16 +17,16 @@ export default createStyles(
           box-sizing: border-box;
           transform: translateX(0);
           z-index: var(--z-index-side, 190);
-          // transition: 0.4s ease;
+          // transition: 0.25s ease-in-out;
 
           &-style {
-            height: 100%;
             background-image: var(--image-bg-layout-side, unset);
             background-color: var(--color-bg-layout-side, #2e394c);
             box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
           }
 
           &-content {
+            height: 100%;
             display: flex;
             flex-direction: column;
           }
@@ -37,8 +37,7 @@ export default createStyles(
           }
 
           &-rift {
-            min-height: var(--size-layout-header-height, 52px);
-            max-height: var(--size-layout-header-height, 52px);
+            height: var(--size-layout-header-height, 52px);
           }
 
           // &-header {
@@ -49,6 +48,11 @@ export default createStyles(
             position: relative;
             flex: 1;
             overflow: auto;
+            // overflow: hidden;
+
+            // &:hover {
+            //   overflow: auto;
+            // }
           }
 
           // &-footer {

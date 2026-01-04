@@ -36,7 +36,6 @@ export default createStyles(
           align-items: center;
           line-height: 14px;
           font-size: ${token.fontSize}px;
-          color: var(--color-text, #f8fafc);
         }
 
         &-text {

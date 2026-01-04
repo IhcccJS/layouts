@@ -3,6 +3,8 @@ import Sider from './sider';
 import { LayoutContext, LayoutSiderContext } from './context';
 import useStyles from './styles';
 
+const MenuButtonToggleId = 'layout-side-menu-toggle-button';
+
 const Layout: React.FC<any> = (props) => {
   const {
     className,
@@ -16,7 +18,6 @@ const Layout: React.FC<any> = (props) => {
     renderButton,
     renderExtra,
     children,
-    heightLayoutHeader,
     ...restProps
   } = props;
   const { styles, cx } = useStyles();
@@ -28,8 +29,7 @@ const Layout: React.FC<any> = (props) => {
         className={cx(
           styles,
           'layout',
-          status === 'collapse' && 'layout-side-collapse',
-          status === 'open' && 'layout-side-open',
+          status && 'layout-side-' + status,
           (contentWidth === 'fixed' || contentWidth?.header === 'fixed') && 'header-width-fixed',
           (contentWidth === 'fixed' || contentWidth?.content === 'fixed') && 'content-width-fixed',
           className,
@@ -44,16 +44,14 @@ const Layout: React.FC<any> = (props) => {
             float && 'main-header-float',
             blur && 'main-header-blur',
           )}
-          style={{ height: heightLayoutHeader }}
         >
           {renderTop}
           <div className={cx(styles, 'header-content')}>
             <div className={cx(styles, 'header-content-left')}>{renderTitle}</div>
             {(renderMenu || renderExtra) && (
               <React.Fragment>
-                <label htmlFor="menu">
-                  <input id="menu" className={cx(styles, 'toggle-view')} type="checkbox" />
-                </label>
+                <input id={MenuButtonToggleId} className={cx(styles, 'toggle-view')} type="checkbox" />
+                <label htmlFor={MenuButtonToggleId}></label>
                 <div className={cx(styles, 'header-content-view')}>
                   <div className={cx(styles, 'header-menu-nav')}>{renderMenu}</div>
                   {renderButton && <div className={cx(styles, 'header-menu-button')}>{renderButton}</div>}
@@ -64,10 +62,7 @@ const Layout: React.FC<any> = (props) => {
           </div>
         </header>
         {fixedHeader && (
-          <header
-            className={cx(styles, 'main-header-placeholder', float && 'main-header-placeholder-float')}
-            style={{ height: heightLayoutHeader }}
-          />
+          <header className={cx(styles, 'main-header-placeholder', float && 'main-header-placeholder-float')} />
         )}
         <main className={cx(styles, 'main-body')}>{children}</main>
       </div>
