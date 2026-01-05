@@ -45,9 +45,6 @@ function Demo() {
           fixedHeader={fixedHeader}
           contentWidth={contentWidth}
           style={{ '--size-layout-header-height': '80px' }}
-          renderTop={
-            <div style={{ background: '#F44336', color: '#fff', paddingBlock: 4, textAlign: 'center' }}>Hello!</div>
-          }
           renderTitle={
             <BlockTitle logo={BASE_PATH + '/logo.png'} title="Test Balabala System" direction="horizontal" />
           }

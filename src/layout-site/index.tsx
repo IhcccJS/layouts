@@ -8,11 +8,13 @@ const MenuButtonToggleId = 'layout-side-menu-toggle-button';
 const Layout: React.FC<any> = (props) => {
   const {
     className,
+    classNames = {},
+    style,
+    styles: userStyles = {},
     fixedHeader,
     float,
     blur,
     contentWidth,
-    renderTop,
     renderTitle,
     renderMenu,
     renderButton,
@@ -33,7 +35,9 @@ const Layout: React.FC<any> = (props) => {
           (contentWidth === 'fixed' || contentWidth?.header === 'fixed') && 'header-width-fixed',
           (contentWidth === 'fixed' || contentWidth?.content === 'fixed') && 'content-width-fixed',
           className,
+          classNames.root,
         )}
+        style={{ ...style, ...userStyles.root }}
         {...restProps}
       >
         <header
@@ -43,9 +47,10 @@ const Layout: React.FC<any> = (props) => {
             fixedHeader && 'main-header-fixed',
             float && 'main-header-float',
             blur && 'main-header-blur',
+            classNames.header,
           )}
+          style={userStyles.header}
         >
-          {renderTop}
           <div className={cx(styles, 'header-content')}>
             <div className={cx(styles, 'header-content-left')}>{renderTitle}</div>
             {(renderMenu || renderExtra) && (
@@ -64,7 +69,9 @@ const Layout: React.FC<any> = (props) => {
         {fixedHeader && (
           <header className={cx(styles, 'main-header-placeholder', float && 'main-header-placeholder-float')} />
         )}
-        <main className={cx(styles, 'main-body')}>{children}</main>
+        <main className={cx(styles, 'main-body', classNames.main)} style={userStyles.main}>
+          {children}
+        </main>
       </div>
     </LayoutContext.Provider>
   );

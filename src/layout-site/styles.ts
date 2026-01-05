@@ -22,6 +22,7 @@ export default createStyles(
           background-color: var(--color-bg-layout-header, #1e293b);
           background-image: var(--image-bg-layout-header, unset);
           background-size: cover;
+          box-sizing: border-box;
           z-index: var(--z-index-header, 200);
 
           &-fixed {

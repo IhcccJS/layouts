@@ -26,7 +26,7 @@ function Demo() {
     <React.Fragment>
       {controlView}
 
-      {/* <div
+      <div
         style={{
           position: 'fixed',
           top: 0,
@@ -39,16 +39,13 @@ function Demo() {
         }}
       >
         Hello!
-      </div> */}
+      </div>
       <LayoutSite
         float={float}
         blur={blur}
         fixedHeader={fixedHeader}
         contentWidth={contentWidth}
         style={{ '--size-layout-header-height': '80px' }}
-        renderTop={
-          <div style={{ background: '#F44336', color: '#fff', paddingBlock: 4, textAlign: 'center' }}>Hello!</div>
-        }
         renderTitle={<BlockTitle logo={BASE_PATH + '/logo.png'} title="Test Balabala System" direction="horizontal" />}
         renderMenu={<BlockMenu blur={blur} location={location} routes={routes} renderIcon={renderIcon} />}
         renderButton={

@@ -8,6 +8,9 @@ import useStyles from './styles';
 const Sider: React.FC<any> = (props) => {
   const {
     className,
+    classNames = {},
+    style,
+    styles: userStyles = {},
     float: siderFloat,
     autoClose,
     status = 'open',
@@ -37,7 +40,10 @@ const Sider: React.FC<any> = (props) => {
           status && 'layout-sider-' + status,
           autoClose && 'layout-sider-auto-close',
           className,
+          classNames.root,
         )}
+        style={{ ...style, ...userStyles.root }}
+        {...restProps}
       >
         <div
           className={cx(
@@ -47,22 +53,39 @@ const Sider: React.FC<any> = (props) => {
             siderFloat && 'page-side-float',
             fixedHeader && float && contentWidth !== 'fixed' && 'page-side-float-top',
           )}
-          {...restProps}
         >
           {((contentWidth !== 'fixed' && !fixedHeader) || !float || !siderFloat) && (
-            <div className={cx(styles, 'page-side-rift')}>{rift}</div>
+            <div className={cx(styles, 'page-side-rift', classNames.rift)} style={userStyles.rift}>
+              {rift}
+            </div>
           )}
-          {header && <div className={cx(styles, 'page-side-header')}>{header}</div>}
-          <div className={cx(styles, 'page-side-body')}>{body}</div>
-          {footer && <div className={cx(styles, 'page-side-footer')}>{footer}</div>}
-          {autoClose && renderHandlerIcon && <div className={cx(styles, 'page-side-handler')}>{renderHandlerIcon}</div>}
+          {header && (
+            <div className={cx(styles, 'page-side-header', classNames.header)} style={userStyles.header}>
+              {header}
+            </div>
+          )}
+          <div className={cx(styles, 'page-side-body', classNames.body)} style={userStyles.body}>
+            {body}
+          </div>
+          {footer && (
+            <div className={cx(styles, 'page-side-footer', classNames.footer)} style={userStyles.footer}>
+              {footer}
+            </div>
+          )}
+          {autoClose && renderHandlerIcon && (
+            <div className={cx(styles, 'page-side-handler', classNames.handler)} style={userStyles.handler}>
+              {renderHandlerIcon}
+            </div>
+          )}
         </div>
         {(!contentWidth ||
           contentWidth === 'fluid' ||
           (typeof contentWidth === 'object' && contentWidth.content !== 'fixed')) && (
           <div className={cx(styles, 'page-side-placeholder')} />
         )}
-        <div className={cx(styles, 'page-content')}>{children}</div>
+        <div className={cx(styles, 'page-content', classNames.page)} style={userStyles.page}>
+          {children}
+        </div>
       </aside>
     </LayoutSiderContext.Provider>
   );
